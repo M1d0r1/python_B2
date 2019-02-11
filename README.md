@@ -1,1 +1,1 @@
-# python_B2
+# Repository for Python training 
