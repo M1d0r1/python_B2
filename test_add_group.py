@@ -14,7 +14,15 @@ class AddGroupTest(unittest.TestCase):
         wd = self.wd
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
-        self.create_group(wd, Group("Group"+str(time.time()), "Header"+str(time.time()),"Footer"+str(time.time())))
+        self.create_group(wd, Group(name="Group"+str(time.time()), header="Header"+str(time.time()),footer="Footer"+str(time.time())))
+        self.navigate_to_groups(wd)
+        self.logout(wd)
+
+    def test_add_empty_group(self):
+        wd = self.wd
+        self.open_start_page(wd)
+        self.login(wd, "admin", "secret")
+        self.create_group(wd, Group(name="", header="", footer=""))
         self.navigate_to_groups(wd)
         self.logout(wd)
 
