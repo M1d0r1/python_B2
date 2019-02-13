@@ -5,7 +5,6 @@ from contact import Contact, Address
 import unittest
 import time
 
-
 class AddGroupsAndContactsTest(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
@@ -31,7 +30,9 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd = self.wd
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
-        self.create_contact(wd, Contact(first_name="Name"+str(time.time()),middle_name="Middle name"+str(time.time()),last_name="Last name"+str(time.time())))
+        tmstp = str(time.time())
+        contact = Contact(first_name="Name"+tmstp,middle_name="Middle name"+tmstp,last_name="Last name"+tmstp,nickname="Nickname"+tmstp,title = "Title"+tmstp, company = "Company"+tmstp, mobile_phone = tmstp[0:8], work_phone = tmstp[1:9],fax = tmstp[2:10],email1=tmstp[0:5]+"@gmail.com", email2=tmstp[6:10]+"@mail.ru", email3=tmstp[8:11]+"@myjob.com",notes="here is my note")
+        self.create_contact(wd, contact)
         self.navigate_to_contacts(wd)
         self.logout(wd)
 
@@ -85,12 +86,33 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
         wd.find_element_by_name("lastname").send_keys(contact.last_name)
-        # wd.find_element_by_name("group_header").click()
-        # wd.find_element_by_name("group_header").clear()
-        # wd.find_element_by_name("group_header").send_keys(group.header)
-        # wd.find_element_by_name("group_footer").click()
-        # wd.find_element_by_name("group_footer").clear()
-        # wd.find_element_by_name("group_footer").send_keys(group.footer)
+        wd.find_element_by_name("nickname").click()
+        wd.find_element_by_name("nickname").clear()
+        wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        wd.find_element_by_name("title").click()
+        wd.find_element_by_name("title").clear()
+        wd.find_element_by_name("title").send_keys(contact.title)
+        wd.find_element_by_name("company").click()
+        wd.find_element_by_name("company").clear()
+        wd.find_element_by_name("company").send_keys(contact.company)
+        wd.find_element_by_name("mobile").click()
+        wd.find_element_by_name("mobile").clear()
+        wd.find_element_by_name("mobile").send_keys(contact.mobile_phone)
+        wd.find_element_by_name("work").click()
+        wd.find_element_by_name("work").clear()
+        wd.find_element_by_name("work").send_keys(contact.work_phone)
+        wd.find_element_by_name("fax").click()
+        wd.find_element_by_name("fax").clear()
+        wd.find_element_by_name("fax").send_keys(contact.fax)
+        wd.find_element_by_name("email").click()
+        wd.find_element_by_name("email").clear()
+        wd.find_element_by_name("email").send_keys(contact.email1)
+        wd.find_element_by_name("email2").click()
+        wd.find_element_by_name("email2").clear()
+        wd.find_element_by_name("email2").send_keys(contact.email2)
+        wd.find_element_by_name("email3").click()
+        wd.find_element_by_name("email3").clear()
+        wd.find_element_by_name("email3").send_keys(contact.email3)
         # Submit group creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
