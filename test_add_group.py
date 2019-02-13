@@ -2,7 +2,6 @@
 from selenium import webdriver
 from group import Group
 from contact import Contact, Address
-import navigation
 import unittest
 import time
 
@@ -32,7 +31,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd = self.wd
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
-        self.create_contact(wd, Contact(first_name="Contact"+str(time.time())))
+        self.create_contact(wd, Contact(first_name="Name"+str(time.time()),middle_name="Middle name"+str(time.time()),last_name="Last name"+str(time.time())))
         self.navigate_to_contacts(wd)
         self.logout(wd)
 
@@ -80,6 +79,12 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.first_name)
+        wd.find_element_by_name("middlename").click()
+        wd.find_element_by_name("middlename").clear()
+        wd.find_element_by_name("middlename").send_keys(contact.middle_name)
+        wd.find_element_by_name("lastname").click()
+        wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys(contact.last_name)
         # wd.find_element_by_name("group_header").click()
         # wd.find_element_by_name("group_header").clear()
         # wd.find_element_by_name("group_header").send_keys(group.header)
