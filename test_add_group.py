@@ -32,7 +32,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd = self.wd
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
-        #self.create_group(wd, Group(name="Group"+str(time.time()), header="Header"+str(time.time()), footer="Footer"+str(time.time())))
+        self.create_contact(wd, Contact(first_name="Contact"+str(time.time())))
         self.navigate_to_contacts(wd)
         self.logout(wd)
 
@@ -87,7 +87,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         # wd.find_element_by_name("group_footer").clear()
         # wd.find_element_by_name("group_footer").send_keys(group.footer)
         # Submit group creation
-        wd.find_element_by_name("xpath=(//input[@name='submit'])[2]").click()
+        wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
 
     def tearDown(self):
