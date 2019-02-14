@@ -127,7 +127,10 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondary_address.home_phone)
-        # Submit group creation
+        wd.find_element_by_name("notes").click()
+        wd.find_element_by_name("notes").clear()
+        wd.find_element_by_name("notes").send_keys(contact.notes)
+        # Submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
 
