@@ -13,34 +13,43 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    # def test_add_group(self):
-    #     wd = self.wd
-    #     self.open_start_page(wd)
-    #     self.login(wd, "admin", "secret")
-    #     self.create_group(wd, Group(name="Group"+str(time.time()), header="Header"+str(time.time()), footer="Footer"+str(time.time())))
-    #     self.navigate_to_groups(wd)
-    #     self.logout(wd)
-    #
-    # def test_add_empty_group(self):
-    #     wd = self.wd
-    #     self.open_start_page(wd)
-    #     self.login(wd, "admin", "secret")
-    #     self.create_group(wd, Group(name="", header="", footer=""))
-    #     self.navigate_to_groups(wd)
-    #     self.logout(wd)
+    def test_add_group(self):
+        wd = self.wd
+        self.open_start_page(wd)
+        self.login(wd, "admin", "secret")
+        # Set the index in order to distinguish the created groups
+        tmstp = str(time.time())
+        ind = tmstp[13:15]
+        self.create_group(wd, Group(name="Group"+ind, header="Header"+ind, footer="Footer"+ind))
+        self.navigate_to_groups(wd)
+        self.logout(wd)
+
+    def test_add_empty_group(self):
+        wd = self.wd
+        self.open_start_page(wd)
+        self.login(wd, "admin", "secret")
+        self.create_group(wd, Group(name="", header="", footer=""))
+        self.navigate_to_groups(wd)
+        self.logout(wd)
 
     def test_add_contact(self):
         wd = self.wd
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
+        # Set the index in order to distinguish the created groups and contacts
         tmstp = str(time.time())
+        ind = tmstp[13:15]
+        # Set contact dates
         birthdate = datetime.date(1980, 11, 20)
         anniversary_date = datetime.date(2005, 3, 14)
+        # Create contact addresses
         primary_address = Address(geo_address = "Country\nCity\nStreet,"+tmstp[13], home_phone = tmstp[4:7]+tmstp[13:16])
         secondary_address = Address(geo_address="Country\nCity\nStreet,"+tmstp[15], home_phone=tmstp[3:6] + tmstp[14:17])
-        group = Group(name="Group" + tmstp[14:17], header="Header" + tmstp[14:17],footer="Footer" + tmstp[14:17])
-        contact = Contact(first_name="Name"+tmstp,middle_name="Middle name"+tmstp,last_name="Last name"+tmstp,nickname="Nickname"+tmstp,title = "Title"+tmstp, company = "Company"+tmstp, primary_address=primary_address, secondary_address=secondary_address, mobile_phone = tmstp[0:8], work_phone = tmstp[1:9],fax = tmstp[2:10],email1=tmstp[0:5]+"@gmail.com", email2=tmstp[6:10]+"@mail.ru", email3=tmstp[8:11]+"@myjob.com",homepage = "https://"+tmstp[13:20]+".com", birthdate = birthdate, anniversary_date = anniversary_date, group = group, notes="here is my note")
+        # Create a group for the contact
+        group = Group(name="Group" + ind, header="Header" + ind,footer="Footer" + ind)
         self.create_group(wd, group)
+        # Create the contact itself
+        contact = Contact(first_name="Name"+ind,middle_name="Middle name"+ind,last_name="Last name"+ind,nickname="Nickname"+ind,title = "Title"+ind, company = "Company"+ind, primary_address=primary_address, secondary_address=secondary_address, mobile_phone = tmstp[0:8], work_phone = tmstp[1:9],fax = tmstp[2:10],email1=tmstp[0:5]+"@gmail.com", email2=tmstp[6:10]+"@mail.ru", email3=tmstp[8:11]+"@myjob.com",homepage = "https://"+tmstp[13:20]+".com", birthdate = birthdate, anniversary_date = anniversary_date, group = group, notes="here is my note")
         self.create_contact(wd, contact)
         self.navigate_to_contacts(wd)
         self.logout(wd)
@@ -98,7 +107,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("photo").send_keys(os.getcwd() + "\Resource\photo.jpg")
+        wd.find_element_by_name("photo").send_keys(os.getcwd() + '\Resource\photo.jpg')
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys(contact.title)
