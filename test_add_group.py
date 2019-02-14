@@ -2,8 +2,10 @@
 from selenium import webdriver
 from group import Group
 from contact import Contact, Address
+from selenium.webdriver.support.ui import Select
 import unittest
 import time
+import datetime
 
 class AddGroupsAndContactsTest(unittest.TestCase):
     def setUp(self):
@@ -31,9 +33,11 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         self.open_start_page(wd)
         self.login(wd, "admin", "secret")
         tmstp = str(time.time())
+        birthdate = datetime.date(1980, 11, 20)
+        anniversary_date = datetime.date(2005, 3, 14)
         primary_address = Address(geo_address = "Country\nCity\nStreet,"+tmstp[13], home_phone = tmstp[4:7]+tmstp[13:16])
         secondary_address = Address(geo_address="Country\nCity\nStreet,"+tmstp[15], home_phone=tmstp[3:6] + tmstp[14:17])
-        contact = Contact(first_name="Name"+tmstp,middle_name="Middle name"+tmstp,last_name="Last name"+tmstp,nickname="Nickname"+tmstp,title = "Title"+tmstp, company = "Company"+tmstp, primary_address=primary_address, secondary_address=secondary_address, mobile_phone = tmstp[0:8], work_phone = tmstp[1:9],fax = tmstp[2:10],email1=tmstp[0:5]+"@gmail.com", email2=tmstp[6:10]+"@mail.ru", email3=tmstp[8:11]+"@myjob.com",notes="here is my note")
+        contact = Contact(first_name="Name"+tmstp,middle_name="Middle name"+tmstp,last_name="Last name"+tmstp,nickname="Nickname"+tmstp,title = "Title"+tmstp, company = "Company"+tmstp, primary_address=primary_address, secondary_address=secondary_address, mobile_phone = tmstp[0:8], work_phone = tmstp[1:9],fax = tmstp[2:10],email1=tmstp[0:5]+"@gmail.com", email2=tmstp[6:10]+"@mail.ru", email3=tmstp[8:11]+"@myjob.com",birthdate = birthdate, anniversary_date = anniversary_date, notes="here is my note")
         self.create_contact(wd, contact)
         self.navigate_to_contacts(wd)
         self.logout(wd)
@@ -121,6 +125,11 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("email3").click()
         wd.find_element_by_name("email3").clear()
         wd.find_element_by_name("email3").send_keys(contact.email3)
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(str(contact.birthdate.day))
+        Select(wd.find_element_by_name("bmonth")).select_by_index(contact.birthdate.month)
+        print(contact.birthdate.month)
+        wd.find_element_by_name("byear").clear()
+        wd.find_element_by_name("byear").send_keys(contact.birthdate.year)
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.secondary_address.geo_address)
