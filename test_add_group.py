@@ -146,6 +146,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondary_address.home_phone)
+        Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group.name)
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
