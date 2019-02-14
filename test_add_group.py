@@ -107,7 +107,7 @@ class AddGroupsAndContactsTest(unittest.TestCase):
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("photo").send_keys(os.getcwd() + '\Resource\photo.jpg')
+        wd.find_element_by_name("photo").send_keys(os.getcwd() + r'\Resource\photo.jpg')
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys(contact.title)
