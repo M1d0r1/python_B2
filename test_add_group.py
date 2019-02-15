@@ -20,11 +20,9 @@ def test_add_group(app):
      app.create_group(Group(name="Group"+ind, header="Header"+ind, footer="Footer"+ind))
      app.logout()
 
-    # def test_add_empty_group(self):
-    #     wd = self.wd
-    #     self.open_start_page(wd)
-    #     self.login(wd, "admin", "secret")
-    #     self.create_group(wd, Group(name="", header="", footer=""))
-    #     self.navigate_to_groups(wd)
-    #     self.logout(wd)
+
+def test_add_empty_group(app):
+    app.login(admin="admin", password="secret")
+    app.create_group(Group(name="", header="", footer=""))
+    app.logout()
 
