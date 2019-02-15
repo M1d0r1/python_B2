@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest
 from group import Group
-import unittest
 import time
 from application import Application
 
