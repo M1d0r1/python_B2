@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from group import Group
-from contact import Contact
+from model.group import Group
+from model.contact import Contact
 import pytest
 import time
 import datetime
-from application import Application
+from fixture.application import Application
 
 @pytest.fixture
 def app(request):

@@ -1,19 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+from fixture.session import SessionHelper
 import os
 
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
-
-    def login(self, admin, password):
-        self.open_start_page()
-        self.wd.find_element_by_name("user").clear()
-        self.wd.find_element_by_name("user").send_keys(admin)
-        self.wd.find_element_by_name("pass").clear()
-        self.wd.find_element_by_name("pass").send_keys(password)
-        self.wd.find_element_by_xpath("//input[@value='Login']").click()
+        self.session = SessionHelper(self)
 
     def create_group(self, group):
         # Init group creation
@@ -32,6 +26,7 @@ class Application:
         # Submit group creation and navigate to groups
         self.wd.find_element_by_name("submit").click()
         self.navigate_to_groups()
+
 
     def create_contact(self, contact):
         # Init contact creation
@@ -105,8 +100,6 @@ class Application:
         self.wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.open_start_page()
 
-    def logout(self):
-        self.wd.find_element_by_link_text("Logout").click()
 
     def open_start_page(self):
         self.wd.get("http://localhost/addressbook/")

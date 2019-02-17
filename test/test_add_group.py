@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import pytest
-from group import Group
+from model.group import Group
 import time
-from application import Application
+from fixture.application import Application
 
 @pytest.fixture
 def app(request):
@@ -12,16 +12,16 @@ def app(request):
 
 
 def test_add_group(app):
-     app.login(admin="admin", password="secret")
+     app.session.login(admin="admin", password="secret")
      # Set the index in order to distinguish the created groups
      tmstp = str(time.time())
      ind = tmstp[13:15]
      app.create_group(Group(name="Group"+ind, header="Header"+ind, footer="Footer"+ind))
-     app.logout()
+     app.session.logout()
 
 
 def test_add_empty_group(app):
-    app.login(admin="admin", password="secret")
+    app.session.login(admin="admin", password="secret")
     app.create_group(Group(name="", header="", footer=""))
-    app.logout()
+    app.session.logout()
 
