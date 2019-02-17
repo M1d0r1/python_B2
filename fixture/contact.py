@@ -23,7 +23,13 @@ class ContactHelper:
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("photo").send_keys(os.getcwd() + r'\Resource\photo.jpg')
+        # Bad fix to find the photo
+        dir = os.getcwd()
+        if dir[len(dir)-5:len(dir)]==r"\test":
+            photo_keys = dir + r'\Resource\photo.jpg'
+        else:
+            photo_keys = dir + r'\test\Resource\photo.jpg'
+        wd.find_element_by_name("photo").send_keys(photo_keys)
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys(contact.title)
