@@ -1,3 +1,5 @@
+import time
+
 class SessionHelper:
     def __init__(self, app):
         self.app = app
@@ -12,4 +14,6 @@ class SessionHelper:
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def logout(self):
-        self.app.wd.find_element_by_link_text("Logout").click()
+        self.app.open_start_page()
+        self.app.wd.find_element_by_xpath("//a[@onclick='document.logout.submit();']").click()
+        self.app.wd.find_element_by_name("user")
