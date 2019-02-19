@@ -35,16 +35,19 @@ class GroupHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("edit").click()
         # Update group parameters
+        old_value = wd.find_element_by_name("group_name").get_attribute('value')
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("Upd")
+        wd.find_element_by_name("group_name").send_keys(old_value+" updated")
+        old_value = wd.find_element_by_name("group_header").get_attribute('value')
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("Upd")
+        wd.find_element_by_name("group_header").send_keys(old_value + " updated")
+        old_value = wd.find_element_by_name("group_footer").get_attribute('value')
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("Upd")
-        # Submit group creation and navigate to groups
+        wd.find_element_by_name("group_footer").send_keys(old_value + " updated")
+        # Submit group modification and navigate to groups
         wd.find_element_by_name("update").click()
         self.app.navigate_to_groups()
 
