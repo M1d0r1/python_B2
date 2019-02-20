@@ -25,39 +25,11 @@ class ContactHelper:
         alert.accept()
         self.app.open_start_page()
 
-    def modify_first(self):
+    def modify_first(self,contact):
         wd = self.app.wd
         self.app.open_start_page()
         #Init modification
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        contact = self.get_data()
-        # Data preparation
-        contact.first_name = contact.first_name + " upd"
-        contact.middle_name = contact.middle_name + "upd"
-        contact.last_name = contact.middle_name + " upd"
-        contact.nickname = contact.nickname + " upd"
-        dir = os.getcwd()
-        if dir[len(dir) - 5:len(dir)] == r"\test":
-            contact.photo_keys = dir + r'\Resource\photo2.jpg'
-        else:
-            contact.photo_keys = dir + r'\test\Resource\photo2.jpg'
-        contact.title = contact.title + " upd"
-        contact.company = contact.company + " upd"
-        contact.primary_address = contact.primary_address+" upd"
-        contact.primary_home_phone = str(int(contact.primary_home_phone)+1)
-        contact.secondary_address = contact.secondary_address+" upd"
-        contact.secondary_home_phone = str(int(contact.secondary_home_phone)+1)
-        contact.mobile_phone = str(int(contact.mobile_phone)+1)
-        contact.work_phone = str(int(contact.work_phone)+1)
-        contact.fax = str(int(contact.fax)+1)
-        contact.email1 = "upd "+contact.email1
-        contact.email2 = "upd "+contact.email2
-        contact.email3 = "upd "+contact.email3
-        contact.homepage = contact.homepage[0:13]+"upd.com"
-        contact.birthdate = datetime.date(contact.birthdate.year+1,contact.birthdate.month,(contact.birthdate.day+1)%27)
-        contact.anniversary_date = datetime.date(contact.anniversary_date.year+1,contact.anniversary_date.month,(contact.anniversary_date.day+1)%27)
-        contact.group = Group(name = "GroupUpd", header = "HeaderUpd", footer = "FooterUpd")
-        contact.notes = "Update\n"+contact.notes
         #Fill the form
         self.fill_form(contact)
         # Submit contact creation
@@ -131,8 +103,10 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
 
-    def get_data(self):
+    def get_data_first(self):
         wd = self.app.wd
+        self.app.open_start_page()
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
         firstname = wd.find_element_by_name("firstname").get_attribute('value')
         middlename = wd.find_element_by_name("middlename").get_attribute('value')
         lastname = wd.find_element_by_name("lastname").get_attribute('value')
@@ -155,4 +129,5 @@ class ContactHelper:
         notes = wd.find_element_by_name("notes").get_attribute('value')
         # birthdate.month and anniversary.month, photo_keys and group are hardcoded
         contact = Contact(first_name=firstname,middle_name=middlename, last_name=lastname,nickname=nickname,photo_keys="",title=title,company=company,primary_address=primary_address, primary_home_phone=primary_home_phone, secondary_address=secondary_address, secondary_home_phone=secondary_home_phone, mobile_phone=mobile_phone,work_phone=work_phone,fax=fax, email1=email1,email2=email2, email3=email3,homepage=homepage,birthdate=birthdate,anniversary_date=anniversary_date,group="",notes=notes )
+        self.app.open_start_page()
         return contact
