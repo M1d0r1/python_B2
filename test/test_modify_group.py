@@ -5,5 +5,6 @@ def test_modify_first_group(app):
     group.name = group.name + " upd"
     group.header = group.header + " upd"
     group.footer = group.footer + " upd"
+    # Modify the group
     app.group.modify_first(group)
     app.session.logout()

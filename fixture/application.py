@@ -15,7 +15,6 @@ class Application:
     def open_start_page(self):
         self.wd.get("http://localhost/addressbook/")
 
-
     def navigate_to_groups(self):
         self.wd.find_element_by_link_text("groups").click()
 

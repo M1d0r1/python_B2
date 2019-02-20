@@ -2,7 +2,6 @@
 from model.group import Group
 import time
 
-
 def test_add_group(app):
      app.session.login(admin="admin", password="secret")
      # Prepare data
@@ -12,8 +11,6 @@ def test_add_group(app):
      # Create the group itself
      app.group.create(new_group)
      app.session.logout()
-
-
 
 def test_add_empty_group(app):
     app.session.login(admin="admin", password="secret")

@@ -1,8 +1,6 @@
 from model.contact import Contact
-import os
 from selenium.webdriver.support.ui import Select
 import datetime
-from model.group import Group
 
 class ContactHelper:
     def __init__(self, app):
@@ -12,7 +10,10 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_start_page()
         wd.find_element_by_link_text("add new").click()
+        # Fill everything but the group
         self.fill_form(contact)
+        # Fill in the group
+        Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group.name)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.open_start_page()
 
@@ -36,6 +37,7 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.app.open_start_page()
 
+    # The method fills in the form for contact creation/modification except for the group (as group is absent in the Edit screen)
     def fill_form(self, contact):
         wd = self.app.wd
         wd.find_element_by_name("firstname").click()
@@ -98,7 +100,6 @@ class ContactHelper:
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondary_home_phone)
-        #Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group.name)
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
