@@ -29,9 +29,11 @@ class GroupHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("edit").click()
         # Update group parameters
-        old_group = self.app.group.get_data()
-        new_group = Group(name=old_group.name + " upd", header=old_group.header + " upd", footer=old_group.footer + " upd")
-        self.fill_form(new_group)
+        group = self.app.group.get_data()
+        group.name = group.name + " upd"
+        group.header=group.header + " upd"
+        group.footer=group.footer + " upd"
+        self.fill_form(group)
         # Submit group modification and navigate to groups
         wd.find_element_by_name("update").click()
         self.app.navigate_to_groups()
