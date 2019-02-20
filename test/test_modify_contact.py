@@ -34,5 +34,6 @@ def test_modify_first_contact(app):
                                              (contact.anniversary_date.day + 1) % 27)
     contact.group = Group(name="GroupUpd", header="HeaderUpd", footer="FooterUpd")
     contact.notes = "Update\n" + contact.notes
+    # Modify the contact
     app.contact.modify_first(contact)
     app.session.logout()

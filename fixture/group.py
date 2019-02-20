@@ -22,17 +22,12 @@ class GroupHelper:
         wd.find_element_by_name("delete").click()
         self.app.navigate_to_groups()
 
-    def modify_first(self):
+    def modify_first(self, group):
         self.app.navigate_to_groups()
         # Init group modification
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("edit").click()
-        # Update group parameters
-        group = self.app.group.get_data()
-        group.name = group.name + " upd"
-        group.header=group.header + " upd"
-        group.footer=group.footer + " upd"
         self.fill_form(group)
         # Submit group modification and navigate to groups
         wd.find_element_by_name("update").click()
@@ -50,10 +45,14 @@ class GroupHelper:
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys(group.footer)
 
-    def get_data(self):
+    def get_data_first(self):
         wd = self.app.wd
+        self.app.navigate_to_groups()
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("edit").click()
         name = wd.find_element_by_name("group_name").get_attribute('value')
         header = wd.find_element_by_name("group_header").get_attribute('value')
         footer = wd.find_element_by_name("group_footer").get_attribute('value')
         group = Group(name, header, footer)
+        self.app.navigate_to_groups()
         return group
