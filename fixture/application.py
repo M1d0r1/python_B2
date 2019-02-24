@@ -38,5 +38,12 @@ class Application:
             wd.find_element_by_name(year_field).clear()
             wd.find_element_by_name(year_field).send_keys(str(date.year))
 
+    def is_valid(self):
+        try:
+            self.wd.current_url
+            return True
+        except:
+            return False
+
     def destroy(self):
         self.wd.quit()
