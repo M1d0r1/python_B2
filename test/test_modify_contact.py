@@ -3,7 +3,6 @@ import datetime
 from model.contact import Contact
 
 def test_modify_first_contact(app):
-    app.session.login(admin="admin", password="secret")
     contact = app.contact.get_data_first()
     #Prepare data
     contact.first_name = contact.first_name + " upd"
@@ -35,9 +34,6 @@ def test_modify_first_contact(app):
     contact.notes = "Update\n" + contact.notes
     # Modify the contact
     app.contact.modify_first(contact)
-    app.session.logout()
 
 def test_modify_first_contact_name(app):
-    app.session.login(admin="admin", password="secret")
     app.contact.modify_first(Contact(first_name="New Contact Name Only"))
-    app.session.logout()
