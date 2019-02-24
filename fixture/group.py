@@ -18,37 +18,43 @@ class GroupHelper:
     def delete_first(self):
         self.app.navigate_to_groups()
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_group()
         wd.find_element_by_name("delete").click()
         self.app.navigate_to_groups()
 
-    def modify_first(self, group):
+    def modify_first(self, new_group_data):
         self.app.navigate_to_groups()
         # Init group modification
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_group()
         wd.find_element_by_name("edit").click()
-        self.fill_form(group)
+        self.fill_form(new_group_data)
         # Submit group modification and navigate to groups
         wd.find_element_by_name("update").click()
         self.app.navigate_to_groups()
 
+    def select_first_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+
     def fill_form(self,group):
         wd = self.app.wd
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
+        self.fill_text_field("group_name", group.name)
+        self.fill_text_field("group_header", group.header)
+        self.fill_text_field("group_footer", group.footer)
+
+
+    def fill_text_field(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
     def get_data_first(self):
         wd = self.app.wd
         self.app.navigate_to_groups()
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_group()
         wd.find_element_by_name("edit").click()
         name = wd.find_element_by_name("group_name").get_attribute('value')
         header = wd.find_element_by_name("group_header").get_attribute('value')
