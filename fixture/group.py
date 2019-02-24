@@ -38,18 +38,9 @@ class GroupHelper:
         wd.find_element_by_name("selected[]").click()
 
     def fill_form(self,group):
-        wd = self.app.wd
-        self.fill_text_field("group_name", group.name)
-        self.fill_text_field("group_header", group.header)
-        self.fill_text_field("group_footer", group.footer)
-
-
-    def fill_text_field(self, field_name, text):
-        wd = self.app.wd
-        if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
+        self.app.fill_text_field("group_name", group.name)
+        self.app.fill_text_field("group_header", group.header)
+        self.app.fill_text_field("group_footer", group.footer)
 
     def get_data_first(self):
         wd = self.app.wd

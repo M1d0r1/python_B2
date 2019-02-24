@@ -18,5 +18,12 @@ class Application:
     def navigate_to_groups(self):
         self.wd.find_element_by_link_text("groups").click()
 
+    def fill_text_field(self, field_name, text):
+        wd = self.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
+
     def destroy(self):
         self.wd.quit()
