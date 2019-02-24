@@ -1,5 +1,6 @@
 import os
 import datetime
+from model.contact import Contact
 
 def test_modify_first_contact(app):
     app.session.login(admin="admin", password="secret")
@@ -28,10 +29,15 @@ def test_modify_first_contact(app):
     contact.email3 = "upd" + contact.email3
     contact.homepage = contact.homepage[0:11] + "upd.com"
     contact.birthdate = datetime.date(contact.birthdate.year + 1, contact.birthdate.month,
-                                      (contact.birthdate.day + 1) % 27)
+                                      (contact.birthdate.day + 1) % 27+1)
     contact.anniversary_date = datetime.date(contact.anniversary_date.year + 1, contact.anniversary_date.month,
-                                             (contact.anniversary_date.day + 1) % 27)
+                                             (contact.anniversary_date.day + 1) % 27+1)
     contact.notes = "Update\n" + contact.notes
     # Modify the contact
     app.contact.modify_first(contact)
+    app.session.logout()
+
+def test_modify_first_contact_name(app):
+    app.session.login(admin="admin", password="secret")
+    app.contact.modify_first(Contact(first_name="New Contact Name Only"))
     app.session.logout()
