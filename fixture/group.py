@@ -53,3 +53,8 @@ class GroupHelper:
         group = Group(name, header, footer)
         self.app.navigate_to_groups()
         return group
+
+    def count(self):
+        wd = self.app.wd
+        self.app.navigate_to_groups()
+        return len(wd.find_elements_by_name("selected[]"))
