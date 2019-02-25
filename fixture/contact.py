@@ -13,7 +13,8 @@ class ContactHelper:
         # Fill everything but the group
         self.fill_form(contact)
         # Fill in the group
-        Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group.name)
+        if contact.group is not None:
+            Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group.name)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.open_start_page()
 
@@ -94,3 +95,8 @@ class ContactHelper:
         contact = Contact(first_name=firstname,middle_name=middlename, last_name=lastname,nickname=nickname,photo_keys="",title=title,company=company,primary_address=primary_address, primary_home_phone=primary_home_phone, secondary_address=secondary_address, secondary_home_phone=secondary_home_phone, mobile_phone=mobile_phone,work_phone=work_phone,fax=fax, email1=email1,email2=email2, email3=email3,homepage=homepage,birthdate=birthdate,anniversary_date=anniversary_date,group="",notes=notes )
         self.app.open_start_page()
         return contact
+
+    def count(self):
+        wd = self.app.wd
+        self.app.open_start_page()
+        return len(wd.find_elements_by_name("selected[]"))
