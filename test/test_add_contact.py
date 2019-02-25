@@ -5,6 +5,7 @@ import time
 import datetime
 import os
 
+
 def test_add_contact(app):
     # Prepare data
     tmstp = str(time.time())

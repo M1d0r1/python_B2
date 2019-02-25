@@ -86,8 +86,16 @@ class ContactHelper:
         email2 = wd.find_element_by_name("email2").get_attribute('value')
         email3 = wd.find_element_by_name("email3").get_attribute('value')
         homepage = wd.find_element_by_name("homepage").get_attribute('value')
-        birthdate  = datetime.date(int(wd.find_element_by_name("byear").get_attribute('value')), 5, int(wd.find_element_by_name("bday").get_attribute('value')))
-        anniversary_date = datetime.date(int(wd.find_element_by_name("ayear").get_attribute('value')), 10, int(wd.find_element_by_name("aday").get_attribute('value')))
+        #Dirty trick: set default dates
+        if (wd.find_element_by_name("byear").get_attribute('value') is not "") and (wd.find_element_by_name("bday").get_attribute('value') is not "0"):
+            birthdate  = datetime.date(int(wd.find_element_by_name("byear").get_attribute('value')), 5, int(wd.find_element_by_name("bday").get_attribute('value')))
+        else:
+            birthdate = datetime.date(1982, 5, 4)
+        if (wd.find_element_by_name("ayear").get_attribute('value') is not "") and (
+                wd.find_element_by_name("aday").get_attribute('value') is not "0"):
+             anniversary_date = datetime.date(int(wd.find_element_by_name("ayear").get_attribute('value')), 10, int(wd.find_element_by_name("aday").get_attribute('value')))
+        else:
+            anniversary_date= datetime.date(2009, 10, 10)
         secondary_address = wd.find_element_by_name("address2").get_attribute('value')
         secondary_home_phone = wd.find_element_by_name("phone2").get_attribute('value')
         notes = wd.find_element_by_name("notes").get_attribute('value')

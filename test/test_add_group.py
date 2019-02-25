@@ -2,6 +2,7 @@
 from model.group import Group
 import time
 
+
 def test_add_group(app):
      # Prepare data
      tmstp = str(time.time())
