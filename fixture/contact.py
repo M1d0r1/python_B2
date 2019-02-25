@@ -26,6 +26,8 @@ class ContactHelper:
         alert=wd.switch_to.alert
         alert.accept()
         self.app.open_start_page()
+       # wd.find_element_by_name("add")
+
 
     def select_first_contact(self):
         wd=self.app.wd

@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(1)
+        self.wd.implicitly_wait(2)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
@@ -18,6 +18,7 @@ class Application:
             return
         else:
             self.wd.get("http://localhost/addressbook/")
+
 
     def navigate_to_groups(self):
         wd = self.wd
