@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(2)
+        #self.wd.implicitly_wait(1)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
@@ -16,7 +16,11 @@ class Application:
         self.wd.get("http://localhost/addressbook/")
 
     def navigate_to_groups(self):
-        self.wd.find_element_by_link_text("groups").click()
+        wd = self.wd
+        if wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("New")):
+            return
+        else:
+            wd.find_element_by_link_text("groups").click()
 
     def fill_text_field(self, field_name, text):
         wd = self.wd
