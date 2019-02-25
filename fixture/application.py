@@ -7,17 +7,21 @@ from selenium.webdriver.support.ui import Select
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        #self.wd.implicitly_wait(1)
+        self.wd.implicitly_wait(1)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
 
     def open_start_page(self):
-        self.wd.get("http://localhost/addressbook/")
+        wd = self.wd
+        if wd.current_url == "http://localhost/addressbook/":
+            return
+        else:
+            self.wd.get("http://localhost/addressbook/")
 
     def navigate_to_groups(self):
         wd = self.wd
-        if wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("New")):
+        if wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("New group")):
             return
         else:
             wd.find_element_by_link_text("groups").click()
