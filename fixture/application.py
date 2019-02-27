@@ -14,7 +14,7 @@ class Application:
 
     def open_start_page(self):
         wd = self.wd
-        if wd.current_url == "http://localhost/addressbook/":
+        if wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_xpath("//input[@value='Send e-Mail']"))>0:
             return
         else:
             self.wd.get("http://localhost/addressbook/")
