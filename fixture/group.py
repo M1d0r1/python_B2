@@ -58,3 +58,13 @@ class GroupHelper:
         wd = self.app.wd
         self.app.navigate_to_groups()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.app.navigate_to_groups()
+        group_list = []
+        for element in wd.find_elements_by_css_selector("span.group"):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            group_list.append(Group(name = text, id = id))
+        return group_list
