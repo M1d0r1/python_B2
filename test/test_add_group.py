@@ -13,6 +13,10 @@ def test_add_group(app):
      app.group.create(new_group)
      new_groups = app.group.get_group_list()
      assert len(old_groups)+1==len(new_groups)
+     #new_groups = sorted(new_groups, key=lambda gr: gr.id)
+     #old_groups = old_groups.append(new_group)
+     #old_groups = sorted(old_groups, key = lambda gr: gr.id)
+
 
 def test_add_empty_group(app):
     empty_group = Group(name="", header="", footer="")
