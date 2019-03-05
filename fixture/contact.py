@@ -25,8 +25,7 @@ class ContactHelper:
         wd.find_element_by_xpath("// input[ @ value = 'Delete']").click()
         alert=wd.switch_to.alert
         alert.accept()
-        self.app.open_start_page()
-       # wd.find_element_by_name("add new")
+        wd.find_element_by_link_text("add new")
 
 
     def select_first_contact(self):

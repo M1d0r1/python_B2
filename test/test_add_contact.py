@@ -7,7 +7,7 @@ import os
 
 
 def test_add_contact(app):
-    for i in range(1,6):
+   # for i in range(1,16):
         # Prepare data
         tmstp = str(time.time())
         ind = tmstp[13:15]
