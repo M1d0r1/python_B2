@@ -26,7 +26,7 @@ class ContactHelper:
         alert=wd.switch_to.alert
         alert.accept()
         self.app.open_start_page()
-       # wd.find_element_by_name("add")
+       # wd.find_element_by_name("add new")
 
 
     def select_first_contact(self):
@@ -110,3 +110,15 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_start_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.app.open_start_page()
+        contact_list = []
+        for element in wd.find_elements_by_name("entry"):
+            cells = element.find_elements_by_tag_name("td")
+            firstname = cells[2].text
+            lastname = cells[1].text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contact_list.append(Contact(first_name = firstname, last_name = lastname, id = id))
+        return contact_list

@@ -52,10 +52,20 @@ def test_modify_first_contact(app):
         contact.anniversary_date = datetime.date(contact.anniversary_date.year + 1, contact.anniversary_date.month,
                                              (contact.anniversary_date.day + 1) % 27+1)
     contact.notes = "Update\n" + contact.notes
+    app.open_start_page()
+    old_contacts = app.contact.get_contact_list()
     # Modify the contact
     app.contact.modify_first(contact)
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) == len(new_contacts)
 
 def test_modify_first_contact_name(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name = "Contact for modification"))
+    app.open_start_page()
+    old_contacts = app.contact.get_contact_list()
+    # Modify the contact
     app.contact.modify_first(Contact(first_name="New Contact Name Only"))
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) == len(new_contacts)
+
