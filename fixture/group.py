@@ -25,8 +25,8 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
-    def delete_first(self):
-        self.delete_by_index(0)
+   # def delete_first(self):
+   #     self.delete_by_index(0)
 
     def modify_by_index(self, index, new_group_data):
         self.app.navigate_to_groups()
@@ -40,8 +40,8 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
-    def modify_first(self, new_group_data):
-        self.modify_by_index(0, new_group_data)
+   # def modify_first(self, new_group_data):
+   #    self.modify_by_index(0, new_group_data)
 
     def select_by_index(self, index):
         wd = self.app.wd

@@ -30,15 +30,15 @@ class ContactHelper:
         wd.find_element_by_link_text("add new")
         self.contact_cache = None
 
-    def delete_first(self):
-        self.delete_by_index(0)
+    #def delete_first(self):
+    #    self.delete_by_index(0)
 
     def select_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
-    def select_first(self):
-        self.select_by_index(0)
+    #def select_first(self):
+    #   self.select_by_index(0)
 
     def modify_by_index(self, index, contact):
         wd = self.app.wd
@@ -52,8 +52,8 @@ class ContactHelper:
         self.app.open_start_page()
         self.contact_cache = None
 
-    def modify_first(self, contact):
-        self.modify_by_index(0, contact)
+    #def modify_first(self, contact):
+    #   self.modify_by_index(0, contact)
 
     # The method fills in the form for contact creation/modification except for the group (as group is absent in the Edit screen)
     def fill_form(self, contact):
