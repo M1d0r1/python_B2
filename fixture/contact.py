@@ -40,17 +40,20 @@ class ContactHelper:
     def select_first(self):
         self.select_by_index(0)
 
-    def modify_first(self, contact):
+    def modify_by_index(self, index, contact):
         wd = self.app.wd
         self.app.open_start_page()
         # Init modification
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         # Fill the form
         self.fill_form(contact)
         # Submit contact creation
         wd.find_element_by_name("update").click()
         self.app.open_start_page()
         self.contact_cache = None
+
+    def modify_first(self, contact):
+        self.modify_by_index(0, contact)
 
     # The method fills in the form for contact creation/modification except for the group (as group is absent in the Edit screen)
     def fill_form(self, contact):
@@ -76,10 +79,10 @@ class ContactHelper:
         self.app.fill_text_field("phone2", contact.secondary_home_phone)
         self.app.fill_text_field("notes", contact.notes)
 
-    def get_data_first(self):
+    def get_data_by_index(self, index):
         wd = self.app.wd
         self.app.open_start_page()
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         firstname = wd.find_element_by_name("firstname").get_attribute('value')
         middlename = wd.find_element_by_name("middlename").get_attribute('value')
         lastname = wd.find_element_by_name("lastname").get_attribute('value')

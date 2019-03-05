@@ -1,12 +1,15 @@
 import os
 import datetime
 from model.contact import Contact
+from random import randrange
 
 
-def test_modify_first_contact(app):
+def test_modify_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="Contact for modification"))
-    contact = app.contact.get_data_first()
+    old_contacts = app.contact.get_contact_list()
+    index = randrange(len(old_contacts))
+    contact = app.contact.get_data_by_index(index)
     # Prepare data
     contact.first_name = contact.first_name + " upd"
     contact.middle_name = contact.middle_name + "upd"
@@ -53,27 +56,27 @@ def test_modify_first_contact(app):
                                                  (contact.anniversary_date.day + 1) % 27 + 1)
     contact.notes = "Update\n" + contact.notes
     app.open_start_page()
-    old_contacts = app.contact.get_contact_list()
-    contact.id = old_contacts[0].id
+    contact.id = old_contacts[index].id
     # Modify the contact
-    app.contact.modify_first(contact)
+    app.contact.modify_by_index(index, contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
-    old_contacts[0] = contact
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
-def test_modify_first_contact_name(app):
+def test_modify_contact_name(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="Contact for modification"))
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
-    contact = Contact(first_name="New Contact Name Only")
-    contact.id = old_contacts[0].id
-    contact.last_name = old_contacts[0].last_name
+    index = randrange(len(old_contacts))
+    contact = Contact(first_name="New Contact Name Only "+str(index))
+    contact.id = old_contacts[index].id
+    contact.last_name = old_contacts[index].last_name
     # Modify the contact
-    app.contact.modify_first(contact)
+    app.contact.modify_by_index(index, contact)
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    old_contacts[0] = contact
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
