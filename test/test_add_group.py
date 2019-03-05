@@ -14,8 +14,9 @@ def test_add_group(app):
      new_groups = app.group.get_group_list()
      assert len(old_groups)+1==len(new_groups)
      #new_groups = sorted(new_groups, key=lambda gr: gr.id)
-     #old_groups = old_groups.append(new_group)
+     old_groups.append(new_group)
      #old_groups = sorted(old_groups, key = lambda gr: gr.id)
+     assert sorted(old_groups, key = Group.id_or_max) == sorted(new_groups, key = Group.id_or_max)
 
 
 def test_add_empty_group(app):

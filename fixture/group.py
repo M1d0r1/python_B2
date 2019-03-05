@@ -1,4 +1,5 @@
 from model.group import Group
+from sys import maxsize
 
 class GroupHelper:
     def __init__(self, app):
@@ -68,3 +69,5 @@ class GroupHelper:
             id = element.find_element_by_name("selected[]").get_attribute("value")
             group_list.append(Group(name = text, id = id))
         return group_list
+
+
