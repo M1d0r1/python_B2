@@ -7,10 +7,9 @@ import os
 
 
 def test_add_contact(app):
-   # for i in range(1,16):
         # Prepare data
         tmstp = str(time.time())
-        ind = tmstp[13:15]
+        ind = tmstp[13:16]
         birthdate = datetime.date(1980, 11, 20)
         anniversary_date = datetime.date(2005, 3, 14)
         new_group = Group(name="Group" + ind, header="Header" + ind,footer="Footer" + ind)

@@ -6,7 +6,7 @@ import time
 def test_add_group(app):
      # Prepare data
      tmstp = str(time.time())
-     ind = tmstp[13:15]
+     ind = tmstp[13:16]
      new_group = Group(name="Group"+ind, header="Header"+ind, footer="Footer"+ind)
      old_groups = app.group.get_group_list()
      # Create the group itself
@@ -25,5 +25,7 @@ def test_add_empty_group(app):
     app.group.create(empty_group)
     new_groups = app.group.get_group_list()
     assert len(old_groups) + 1 == len(new_groups)
+    old_groups.append(empty_group)
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 

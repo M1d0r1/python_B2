@@ -54,18 +54,25 @@ def test_modify_first_contact(app):
     contact.notes = "Update\n" + contact.notes
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
+    contact.id = old_contacts[0].id
     # Modify the contact
     app.contact.modify_first(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
+    old_contacts[0] = contact
+    assert sorted(old_contacts, key = Contact.id_or_max)==sorted(new_contacts, key = Contact.id_or_max)
 
 def test_modify_first_contact_name(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name = "Contact for modification"))
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
+    contact = Contact(first_name="New Contact Name Only")
+    contact.id = old_contacts[0].id
+    contact.last_name = old_contacts[0].last_name
     # Modify the contact
-    app.contact.modify_first(Contact(first_name="New Contact Name Only"))
+    app.contact.modify_first(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
-
+    old_contacts[0] = contact
+    assert sorted(old_contacts, key = Contact.id_or_max)==sorted(new_contacts, key = Contact.id_or_max)
