@@ -73,7 +73,7 @@ def test_modify_first_contact_name(app):
     contact.last_name = old_contacts[0].last_name
     # Modify the contact
     app.contact.modify_first(contact)
+    assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
     old_contacts[0] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
