@@ -4,21 +4,22 @@ from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
 from selenium.webdriver.support.ui import Select
 
+
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        #self.wd.implicitly_wait(1)
+        # self.wd.implicitly_wait(1)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
 
     def open_start_page(self):
         wd = self.wd
-        if wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_xpath("//input[@value='Send e-Mail']"))>0:
+        if wd.current_url.endswith("/addressbook/") and len(
+                wd.find_elements_by_xpath("//input[@value='Send e-Mail']")) > 0:
             return
         else:
             self.wd.get("http://localhost/addressbook/")
-
 
     def navigate_to_groups(self):
         wd = self.wd
@@ -47,6 +48,7 @@ class Application:
             wd.find_element_by_name(year_field).clear()
             wd.find_element_by_name(year_field).send_keys(str(date.year))
 
+    # noinspection PyStatementEffect,PyBroadException
     def is_valid(self):
         try:
             self.wd.current_url

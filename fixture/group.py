@@ -1,11 +1,11 @@
 from model.group import Group
-from sys import maxsize
+
 
 class GroupHelper:
     def __init__(self, app):
         self.app = app
 
-    def create(self,group):
+    def create(self, group):
         # Init group creation
         self.app.navigate_to_groups()
         wd = self.app.wd
@@ -38,7 +38,7 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def fill_form(self,group):
+    def fill_form(self, group):
         self.app.fill_text_field("group_name", group.name)
         self.app.fill_text_field("group_header", group.header)
         self.app.fill_text_field("group_footer", group.footer)
@@ -67,7 +67,5 @@ class GroupHelper:
         for element in wd.find_elements_by_css_selector("span.group"):
             text = element.text
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            group_list.append(Group(name = text, id = id))
+            group_list.append(Group(name=text, id=id))
         return group_list
-
-

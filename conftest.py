@@ -3,6 +3,8 @@ from fixture.application import Application
 
 fixture = None
 
+
+# noinspection PyUnusedLocal
 @pytest.fixture
 def app(request):
     global fixture
@@ -13,10 +15,12 @@ def app(request):
     fixture.session.ensure_login(username="admin", password="secret")
     return fixture
 
-@pytest.fixture(scope = "session", autouse=True)
+
+@pytest.fixture(scope="session", autouse=True)
 def teardown(request):
     def fin():
         fixture.session.ensure_logout()
         fixture.destroy()
+
     request.addfinalizer(fin)
     return fixture

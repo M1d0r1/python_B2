@@ -5,9 +5,9 @@ from model.contact import Contact
 
 def test_modify_first_contact(app):
     if app.contact.count() == 0:
-        app.contact.create(Contact(first_name = "Contact for modification"))
+        app.contact.create(Contact(first_name="Contact for modification"))
     contact = app.contact.get_data_first()
-    #Prepare data
+    # Prepare data
     contact.first_name = contact.first_name + " upd"
     contact.middle_name = contact.middle_name + "upd"
     contact.last_name = contact.last_name + " upd"
@@ -47,10 +47,10 @@ def test_modify_first_contact(app):
     contact.homepage = contact.homepage[0:11] + "upd.com"
     if contact.birthdate is not None:
         contact.birthdate = datetime.date(contact.birthdate.year + 1, contact.birthdate.month,
-                                      (contact.birthdate.day + 1) % 27+1)
+                                          (contact.birthdate.day + 1) % 27 + 1)
     if contact.anniversary_date is not None:
         contact.anniversary_date = datetime.date(contact.anniversary_date.year + 1, contact.anniversary_date.month,
-                                             (contact.anniversary_date.day + 1) % 27+1)
+                                                 (contact.anniversary_date.day + 1) % 27 + 1)
     contact.notes = "Update\n" + contact.notes
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
@@ -60,11 +60,12 @@ def test_modify_first_contact(app):
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
     old_contacts[0] = contact
-    assert sorted(old_contacts, key = Contact.id_or_max)==sorted(new_contacts, key = Contact.id_or_max)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+
 
 def test_modify_first_contact_name(app):
     if app.contact.count() == 0:
-        app.contact.create(Contact(first_name = "Contact for modification"))
+        app.contact.create(Contact(first_name="Contact for modification"))
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
     contact = Contact(first_name="New Contact Name Only")
@@ -75,4 +76,4 @@ def test_modify_first_contact_name(app):
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
     old_contacts[0] = contact
-    assert sorted(old_contacts, key = Contact.id_or_max)==sorted(new_contacts, key = Contact.id_or_max)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)

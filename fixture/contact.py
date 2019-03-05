@@ -2,6 +2,7 @@ from model.contact import Contact
 from selenium.webdriver.support.ui import Select
 import datetime
 
+
 class ContactHelper:
     def __init__(self, app):
         self.app = app
@@ -23,21 +24,20 @@ class ContactHelper:
         self.app.open_start_page()
         self.select_first_contact()
         wd.find_element_by_xpath("// input[ @ value = 'Delete']").click()
-        alert=wd.switch_to.alert
+        alert = wd.switch_to.alert
         alert.accept()
         wd.find_element_by_link_text("add new")
 
-
     def select_first_contact(self):
-        wd=self.app.wd
+        wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def modify_first(self,contact):
+    def modify_first(self, contact):
         wd = self.app.wd
         self.app.open_start_page()
-        #Init modification
+        # Init modification
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        #Fill the form
+        # Fill the form
         self.fill_form(contact)
         # Submit contact creation
         wd.find_element_by_name("update").click()
@@ -45,7 +45,6 @@ class ContactHelper:
 
     # The method fills in the form for contact creation/modification except for the group (as group is absent in the Edit screen)
     def fill_form(self, contact):
-        wd = self.app.wd
         self.app.fill_text_field("firstname", contact.first_name)
         self.app.fill_text_field("middlename", contact.middle_name)
         self.app.fill_text_field("lastname", contact.last_name)
@@ -87,21 +86,29 @@ class ContactHelper:
         email2 = wd.find_element_by_name("email2").get_attribute('value')
         email3 = wd.find_element_by_name("email3").get_attribute('value')
         homepage = wd.find_element_by_name("homepage").get_attribute('value')
-        #Dirty trick: set default dates
-        if (wd.find_element_by_name("byear").get_attribute('value') is not "") and (wd.find_element_by_name("bday").get_attribute('value') is not "0"):
-            birthdate  = datetime.date(int(wd.find_element_by_name("byear").get_attribute('value')), 5, int(wd.find_element_by_name("bday").get_attribute('value')))
+        # Dirty trick: set default dates
+        if (wd.find_element_by_name("byear").get_attribute('value') is not "") and (
+                wd.find_element_by_name("bday").get_attribute('value') is not "0"):
+            birthdate = datetime.date(int(wd.find_element_by_name("byear").get_attribute('value')), 5,
+                                      int(wd.find_element_by_name("bday").get_attribute('value')))
         else:
             birthdate = datetime.date(1982, 5, 4)
         if (wd.find_element_by_name("ayear").get_attribute('value') is not "") and (
                 wd.find_element_by_name("aday").get_attribute('value') is not "0"):
-             anniversary_date = datetime.date(int(wd.find_element_by_name("ayear").get_attribute('value')), 10, int(wd.find_element_by_name("aday").get_attribute('value')))
+            anniversary_date = datetime.date(int(wd.find_element_by_name("ayear").get_attribute('value')), 10,
+                                             int(wd.find_element_by_name("aday").get_attribute('value')))
         else:
-            anniversary_date= datetime.date(2009, 10, 10)
+            anniversary_date = datetime.date(2009, 10, 10)
         secondary_address = wd.find_element_by_name("address2").get_attribute('value')
         secondary_home_phone = wd.find_element_by_name("phone2").get_attribute('value')
         notes = wd.find_element_by_name("notes").get_attribute('value')
         # birthdate.month and anniversary.month, photo_keys and group are hardcoded
-        contact = Contact(first_name=firstname,middle_name=middlename, last_name=lastname,nickname=nickname,photo_keys="",title=title,company=company,primary_address=primary_address, primary_home_phone=primary_home_phone, secondary_address=secondary_address, secondary_home_phone=secondary_home_phone, mobile_phone=mobile_phone,work_phone=work_phone,fax=fax, email1=email1,email2=email2, email3=email3,homepage=homepage,birthdate=birthdate,anniversary_date=anniversary_date,group="",notes=notes )
+        contact = Contact(first_name=firstname, middle_name=middlename, last_name=lastname, nickname=nickname,
+                          photo_keys="", title=title, company=company, primary_address=primary_address,
+                          primary_home_phone=primary_home_phone, secondary_address=secondary_address,
+                          secondary_home_phone=secondary_home_phone, mobile_phone=mobile_phone, work_phone=work_phone,
+                          fax=fax, email1=email1, email2=email2, email3=email3, homepage=homepage, birthdate=birthdate,
+                          anniversary_date=anniversary_date, group="", notes=notes)
         self.app.open_start_page()
         return contact
 
@@ -119,5 +126,5 @@ class ContactHelper:
             firstname = cells[2].text
             lastname = cells[1].text
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contact_list.append(Contact(first_name = firstname, last_name = lastname, id = id))
+            contact_list.append(Contact(first_name=firstname, last_name=lastname, id=id))
         return contact_list
