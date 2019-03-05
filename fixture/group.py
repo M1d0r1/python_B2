@@ -17,19 +17,22 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
-    def delete_first(self):
+    def delete_by_index(self, index):
         self.app.navigate_to_groups()
         wd = self.app.wd
-        self.select_first_group()
+        self.select_by_index(index)
         wd.find_element_by_name("delete").click()
         self.app.navigate_to_groups()
         self.group_cache = None
+
+    def delete_first(self):
+        self.delete_by_index(0)
 
     def modify_first(self, new_group_data):
         self.app.navigate_to_groups()
         # Init group modification
         wd = self.app.wd
-        self.select_first_group()
+        self.select_by_index(0)
         wd.find_element_by_name("edit").click()
         self.fill_form(new_group_data)
         # Submit group modification and navigate to groups
@@ -37,9 +40,9 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
-    def select_first_group(self):
+    def select_by_index(self, index):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def fill_form(self, group):
         self.app.fill_text_field("group_name", group.name)
@@ -49,7 +52,7 @@ class GroupHelper:
     def get_data_first(self):
         wd = self.app.wd
         self.app.navigate_to_groups()
-        self.select_first_group()
+        self.select_by_index(0)
         wd.find_element_by_name("edit").click()
         name = wd.find_element_by_name("group_name").get_attribute('value')
         header = wd.find_element_by_name("group_header").get_attribute('value')
