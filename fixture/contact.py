@@ -153,10 +153,10 @@ class ContactHelper:
         firstname = cells[2].text
         lastname = cells[1].text
         address = cells[3].text
-        all_emails = cells[4].text.splitlines()
-        all_phones = cells[5].text.splitlines()
+        all_emails = cells[4].text
+        all_phones = cells[5].text
         id = element.find_element_by_name("selected[]").get_attribute("value")
-        contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, primary_home_phone = all_phones[0], mobile_phone=all_phones[1], work_phone=all_phones[2], secondary_home_phone=all_phones[3], email1=all_emails[0], email2=all_emails[1], email3=all_emails[2],id=id)
+        contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, all_phones=all_phones, all_emails=all_emails,id=id)
         return contact
 
     def get_data_from_view_page_by_index(self, index):
@@ -167,7 +167,10 @@ class ContactHelper:
         mobilephone = re.search("M: (.*)", text).group(1)
         workphone = re.search("W: (.*)", text).group(1)
         secondaryphone = re.search("P: (.*)", text).group(1)
-        return Contact(primary_home_phone=homephone, mobile_phone=mobilephone, work_phone=workphone, secondary_home_phone=secondaryphone)
+        email1 = re.search("(.*)@(.*).(.*)",text).group(1)+re.search("(.*)@(.*).(.*)",text).group(2)+re.search("(.*)@(.*).(.*)",text).group(3)
+        email2 = re.search("(.*)@(.*).(.*)", text)
+        email3 = re.search("(.*)@(.*).(.*)", text).group(3)
+        return Contact(email1 = email1, email2=email2, email3=email3, primary_home_phone=homephone, mobile_phone=mobilephone, work_phone=workphone, secondary_home_phone=secondaryphone)
 
     def open_contact_to_view_by_index(self, index):
         wd = self.app.wd
