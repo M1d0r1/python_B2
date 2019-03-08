@@ -153,8 +153,8 @@ class ContactHelper:
         firstname = cells[2].text
         lastname = cells[1].text
         address = cells[3].text
-        #all_emails = cells[4].splitlines()
+        all_emails = cells[4].text.splitlines()
         all_phones = cells[5].text.splitlines()
         id = element.find_element_by_name("selected[]").get_attribute("value")
-        contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, primary_home_phone = all_phones[0], mobile_phone=all_phones[1], work_phone=all_phones[2], secondary_home_phone=all_phones[3], id=id)
+        contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, primary_home_phone = all_phones[0], mobile_phone=all_phones[1], work_phone=all_phones[2], secondary_home_phone=all_phones[3], email1=all_emails[0], email2=all_emails[1], email3=all_emails[2],id=id)
         return contact

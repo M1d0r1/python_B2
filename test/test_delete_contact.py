@@ -3,6 +3,7 @@ from random import randrange
 
 
 def test_delete_contact(app):
+  #for i in range (0,9):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="Contact for deletion"))
     app.open_start_page()
