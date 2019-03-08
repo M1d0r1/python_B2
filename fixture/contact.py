@@ -1,7 +1,7 @@
 from model.contact import Contact
 from selenium.webdriver.support.ui import Select
 import datetime
-
+import re
 
 class ContactHelper:
     def __init__(self, app):
@@ -158,3 +158,18 @@ class ContactHelper:
         id = element.find_element_by_name("selected[]").get_attribute("value")
         contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, primary_home_phone = all_phones[0], mobile_phone=all_phones[1], work_phone=all_phones[2], secondary_home_phone=all_phones[3], email1=all_emails[0], email2=all_emails[1], email3=all_emails[2],id=id)
         return contact
+
+    def get_data_from_view_page_by_index(self, index):
+        wd = self.app.wd
+        self.open_contact_to_view_by_index(index)
+        text = wd.find_element_by_id("content").text
+        homephone = re.search("H: (.*)", text).group(1)
+        mobilephone = re.search("M: (.*)", text).group(1)
+        workphone = re.search("W: (.*)", text).group(1)
+        secondaryphone = re.search("P: (.*)", text).group(1)
+        return Contact(primary_home_phone=homephone, mobile_phone=mobilephone, work_phone=workphone, secondary_home_phone=secondaryphone)
+
+    def open_contact_to_view_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_start_page()
+        wd.find_elements_by_xpath("//img[@alt='Details']")[index].click()
