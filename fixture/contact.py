@@ -79,10 +79,14 @@ class ContactHelper:
         self.app.fill_text_field("phone2", contact.secondary_home_phone)
         self.app.fill_text_field("notes", contact.notes)
 
-    def get_data_by_index(self, index):
+    def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.app.open_start_page()
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
+
+    def get_data_from_edit_page_by_index(self, index):
+        wd = self.app.wd
+        self.open_contact_to_edit_by_index(index)
         firstname = wd.find_element_by_name("firstname").get_attribute('value')
         middlename = wd.find_element_by_name("middlename").get_attribute('value')
         lastname = wd.find_element_by_name("lastname").get_attribute('value')
@@ -98,6 +102,7 @@ class ContactHelper:
         email2 = wd.find_element_by_name("email2").get_attribute('value')
         email3 = wd.find_element_by_name("email3").get_attribute('value')
         homepage = wd.find_element_by_name("homepage").get_attribute('value')
+        id = wd.find_element_by_name("id").get_attribute('value')
         # Dirty trick: set default dates
         if (wd.find_element_by_name("byear").get_attribute('value') is not "") and (
                 wd.find_element_by_name("bday").get_attribute('value') is not "0"):
@@ -136,10 +141,20 @@ class ContactHelper:
             wd = self.app.wd
             self.app.open_start_page()
             self.contact_cache = []
-            for element in wd.find_elements_by_name("entry"):
-                cells = element.find_elements_by_tag_name("td")
-                firstname = cells[2].text
-                lastname = cells[1].text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cache.append(Contact(first_name=firstname, last_name=lastname, id=id))
+            for i in range(0,len(wd.find_elements_by_name("entry"))):
+                contact = self.get_data_from_home_page_by_index(i)
+                self.contact_cache.append(contact)
         return list(self.contact_cache)
+
+    def get_data_from_home_page_by_index(self, index):
+        wd = self.app.wd
+        element = wd.find_elements_by_name("entry")[index]
+        cells = element.find_elements_by_tag_name("td")
+        firstname = cells[2].text
+        lastname = cells[1].text
+        address = cells[3].text
+        all_emails = cells[4].text
+        all_phones = cells[5].text
+        id = element.find_element_by_name("selected[]").get_attribute("value")
+        contact = Contact(first_name=firstname, last_name=lastname, primary_address=address, id=id)
+        return contact

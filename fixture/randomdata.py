@@ -13,5 +13,4 @@ class RandomDataHelper:
         return str(random.randrange(1000000,9999999))
 
     def get_random_multistring(self):
-        ind = random.randrange(20)
         return "%s\n%s\n%s" % (self.get_random_string(), self.get_random_string(), self.get_random_string())

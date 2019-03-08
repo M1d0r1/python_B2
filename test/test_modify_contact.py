@@ -9,7 +9,7 @@ def test_modify_contact(app):
         app.contact.create(Contact(first_name="Contact for modification"))
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
-    contact = app.contact.get_data_by_index(index)
+    contact = app.contact.get_data_from_edit_page_by_index(index)
     # Prepare data
     contact.first_name = "%s %s" % (contact.first_name, app.data.get_random_string())
     contact.middle_name = "%s %s" % (contact.middle_name, app.data.get_random_string())
@@ -66,17 +66,17 @@ def test_modify_contact(app):
 
 
 def test_modify_contact_name(app):
-    if app.contact.count() == 0:
+     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="Contact for modification"))
-    app.open_start_page()
-    old_contacts = app.contact.get_contact_list()
-    index = randrange(len(old_contacts))
-    contact = Contact(first_name="New Contact Name Only " + str(index))
-    contact.id = old_contacts[index].id
-    contact.last_name = old_contacts[index].last_name
-    # Modify the contact
-    app.contact.modify_by_index(index, contact)
-    assert len(old_contacts) == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts[index] = contact
-    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+     app.open_start_page()
+     old_contacts = app.contact.get_contact_list()
+     index = randrange(len(old_contacts))
+     contact = Contact(first_name="New Contact Name Only " + str(index))
+     contact.id = old_contacts[index].id
+     contact.last_name = old_contacts[index].last_name
+     # Modify the contact
+     app.contact.modify_by_index(index, contact)
+     assert len(old_contacts) == app.contact.count()
+     new_contacts = app.contact.get_contact_list()
+     old_contacts[index] = contact
+     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
