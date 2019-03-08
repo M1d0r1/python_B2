@@ -23,7 +23,7 @@ def merge_phones_like_home_page(contact):
                                        [contact.primary_home_phone, contact.mobile_phone, contact.work_phone, contact.secondary_home_phone]))))
 
 def clear(s):
-    return re.sub("[- )(] ","",s)
+    return re.sub("[- )(]","",s)
 
 # def test_verify_info_on_view_page(app):
 #     if app.contact.count() == 0:
