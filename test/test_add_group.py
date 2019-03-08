@@ -5,9 +5,7 @@ import time
 
 def test_add_group(app):
     # Prepare data
-    tmstp = str(time.time())
-    ind = tmstp[13:16]
-    new_group = Group(name="Group" + ind, header="Header" + ind, footer="Footer" + ind)
+    new_group = Group(name="Group" + app.data.get_random_string(), header="Header" + app.data.get_random_string(), footer="Footer" + app.data.get_random_string())
     old_groups = app.group.get_group_list()
     # Create the group itself
     app.group.create(new_group)
@@ -15,7 +13,6 @@ def test_add_group(app):
     # new_groups = sorted(new_groups, key=lambda gr: gr.id)
     new_groups = app.group.get_group_list()
     old_groups.append(new_group)
-    # old_groups = sorted(old_groups, key = lambda gr: gr.id)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
