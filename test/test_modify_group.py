@@ -9,7 +9,7 @@ def test_modify_group(app):
     index = randrange(len(old_groups))
     group = app.group.get_data(index)
     # Prepare data
-    group.name = "%s %s" % (group.name,app.data.get_random_string())
+    group.name = "%s %s" % (group.name, app.data.get_random_string())
     group.header = "%s %s" % (group.header, app.data.get_random_string())
     group.footer = "%s %s" % (group.footer, app.data.get_random_string())
     group.id = old_groups[index].id

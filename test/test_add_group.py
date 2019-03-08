@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
-import time
 
 
 def test_add_group(app):

@@ -11,7 +11,7 @@ def test_modify_contact(app):
     index = randrange(len(old_contacts))
     contact = app.contact.get_data_by_index(index)
     # Prepare data
-    contact.first_name = "%s %s" %(contact.first_name, app.data.get_random_string())
+    contact.first_name = "%s %s" % (contact.first_name, app.data.get_random_string())
     contact.middle_name = "%s %s" % (contact.middle_name, app.data.get_random_string())
     contact.last_name = "%s %s" % (contact.last_name, app.data.get_random_string())
     contact.nickname = "%s %s" % (contact.nickname, app.data.get_random_string())
@@ -44,7 +44,7 @@ def test_modify_contact(app):
         contact.fax = str(int(contact.fax) + 1)
     else:
         contact.fax = app.data.get_random_phone()
-    contact.email1 = app.data.get_random_string()+ contact.email1
+    contact.email1 = app.data.get_random_string() + contact.email1
     contact.email2 = app.data.get_random_string() + contact.email2
     contact.email3 = app.data.get_random_string() + contact.email3
     contact.homepage = "%s%s.com" % (contact.homepage[0:11], app.data.get_random_string())
@@ -71,7 +71,7 @@ def test_modify_contact_name(app):
     app.open_start_page()
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
-    contact = Contact(first_name="New Contact Name Only "+str(index))
+    contact = Contact(first_name="New Contact Name Only " + str(index))
     contact.id = old_contacts[index].id
     contact.last_name = old_contacts[index].last_name
     # Modify the contact
