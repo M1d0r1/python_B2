@@ -11,50 +11,50 @@ def test_modify_contact(app):
     index = randrange(len(old_contacts))
     contact = app.contact.get_data_by_index(index)
     # Prepare data
-    contact.first_name = contact.first_name + " upd"
-    contact.middle_name = contact.middle_name + "upd"
-    contact.last_name = contact.last_name + " upd"
-    contact.nickname = contact.nickname + " upd"
+    contact.first_name = contact.first_name + app.data.get_random_string()
+    contact.middle_name = contact.middle_name + app.data.get_random_string()
+    contact.last_name = contact.last_name + app.data.get_random_string()
+    contact.nickname = contact.nickname + app.data.get_random_string()
     dir = os.getcwd()
     if dir[len(dir) - 5:len(dir)] == r"\test":
         contact.photo_keys = dir + r'\Resource\photo2.jpg'
     else:
         contact.photo_keys = dir + r'\test\Resource\photo2.jpg'
-    contact.title = contact.title + " upd"
-    contact.company = contact.company + " upd"
-    contact.primary_address = contact.primary_address + " upd"
+    contact.title = contact.title + app.data.get_random_string()
+    contact.company = contact.company  + app.data.get_random_string()
+    contact.primary_address = "%s\n%s" % (contact.primary_address, app.data.get_random_string())
     if contact.primary_home_phone is not "":
         contact.primary_home_phone = str(int(contact.primary_home_phone) + 1)
     else:
-        contact.primary_home_phone = "1111111"
-    contact.secondary_address = contact.secondary_address + " upd"
+        contact.primary_home_phone = app.data.get_random_phone()
+    contact.secondary_address = "%s\n%s" % (contact.secondary_address, app.data.get_random_string())
     if contact.secondary_home_phone is not "":
         contact.secondary_home_phone = str(int(contact.secondary_home_phone) + 1)
     else:
-        contact.secondary_home_phone = "2222222"
+        contact.secondary_home_phone = app.data.get_random_phone()
     if contact.mobile_phone is not "":
         contact.mobile_phone = str(int(contact.mobile_phone) + 1)
     else:
-        contact.mobile_phone = "3333333"
+        contact.mobile_phone = app.data.get_random_phone()
     if contact.work_phone is not "":
         contact.work_phone = str(int(contact.work_phone) + 1)
     else:
-        contact.work_phone = "4444444"
+        contact.work_phone = app.data.get_random_phone()
     if contact.fax is not "":
         contact.fax = str(int(contact.fax) + 1)
     else:
-        contact.fax = "5555555"
-    contact.email1 = "upd" + contact.email1
-    contact.email2 = "upd" + contact.email2
-    contact.email3 = "upd" + contact.email3
-    contact.homepage = contact.homepage[0:11] + "upd.com"
+        contact.fax = app.data.get_random_phone()
+    contact.email1 = app.data.get_random_string()+ contact.email1
+    contact.email2 = app.data.get_random_string() + contact.email2
+    contact.email3 = app.data.get_random_string() + contact.email3
+    contact.homepage = "%s%s.com" % (contact.homepage[0:11], app.data.get_random_string())
     if contact.birthdate is not None:
         contact.birthdate = datetime.date(contact.birthdate.year + 1, contact.birthdate.month,
                                           (contact.birthdate.day + 1) % 27 + 1)
     if contact.anniversary_date is not None:
         contact.anniversary_date = datetime.date(contact.anniversary_date.year + 1, contact.anniversary_date.month,
                                                  (contact.anniversary_date.day + 1) % 27 + 1)
-    contact.notes = "Update\n" + contact.notes
+    contact.notes = "%s\n%s" % (app.data.get_random_multistring(), contact.notes)
     app.open_start_page()
     contact.id = old_contacts[index].id
     # Modify the contact
