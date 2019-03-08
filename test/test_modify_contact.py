@@ -11,17 +11,17 @@ def test_modify_contact(app):
     index = randrange(len(old_contacts))
     contact = app.contact.get_data_by_index(index)
     # Prepare data
-    contact.first_name = contact.first_name + app.data.get_random_string()
-    contact.middle_name = contact.middle_name + app.data.get_random_string()
-    contact.last_name = contact.last_name + app.data.get_random_string()
-    contact.nickname = contact.nickname + app.data.get_random_string()
+    contact.first_name = "%s %s" %(contact.first_name, app.data.get_random_string())
+    contact.middle_name = "%s %s" % (contact.middle_name, app.data.get_random_string())
+    contact.last_name = "%s %s" % (contact.last_name, app.data.get_random_string())
+    contact.nickname = "%s %s" % (contact.nickname, app.data.get_random_string())
     dir = os.getcwd()
     if dir[len(dir) - 5:len(dir)] == r"\test":
         contact.photo_keys = dir + r'\Resource\photo2.jpg'
     else:
         contact.photo_keys = dir + r'\test\Resource\photo2.jpg'
-    contact.title = contact.title + app.data.get_random_string()
-    contact.company = contact.company  + app.data.get_random_string()
+    contact.title = "%s %s" % (contact.title, app.data.get_random_string())
+    contact.company = "%s %s" % (contact.company, app.data.get_random_string())
     contact.primary_address = "%s\n%s" % (contact.primary_address, app.data.get_random_string())
     if contact.primary_home_phone is not "":
         contact.primary_home_phone = str(int(contact.primary_home_phone) + 1)

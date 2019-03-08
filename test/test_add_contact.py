@@ -9,7 +9,7 @@ def test_add_contact(app):
     # Prepare data
     birthdate = datetime.date(1980, 11, 20)
     anniversary_date = datetime.date(2005, 3, 14)
-    new_group = Group(name="Group" + app.data.get_random_string(), header="Header" + app.data.get_random_string(), footer="Footer" + app.data.get_random_string())
+    new_group = Group(name="Group " + app.data.get_random_string(), header="Header " + app.data.get_random_string(), footer="Footer " + app.data.get_random_string())
     app.group.create(new_group)
     dir = os.getcwd()
     if dir[len(dir) - 5:len(dir)] == r"\test":
@@ -17,9 +17,9 @@ def test_add_contact(app):
     else:
         photo_keys = dir + r'\test\Resource\photo.jpg'
     # Create the contact itself
-    new_contact = Contact(first_name= "Name"+ app.data.get_random_string(), middle_name="Middle name" + app.data.get_random_string(), last_name="Last name" + app.data.get_random_string(),
-                          nickname="Nickname" + app.data.get_random_string(), photo_keys=photo_keys, title="Title" + app.data.get_random_string(),
-                          company="Company" + app.data.get_random_string(), primary_address=app.data.get_random_multistring(),
+    new_contact = Contact(first_name= "Name "+ app.data.get_random_string(), middle_name="Middle name " + app.data.get_random_string(), last_name="Last name " + app.data.get_random_string(),
+                          nickname="Nickname " + app.data.get_random_string(), photo_keys=photo_keys, title="Title " + app.data.get_random_string(),
+                          company="Company " + app.data.get_random_string(), primary_address=app.data.get_random_multistring(),
                           primary_home_phone= app.data.get_random_phone(),
                           secondary_address=app.data.get_random_multistring(),
                           secondary_home_phone=app.data.get_random_phone(), mobile_phone=app.data.get_random_phone(),

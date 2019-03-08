@@ -5,12 +5,11 @@ import time
 
 def test_add_group(app):
     # Prepare data
-    new_group = Group(name="Group" + app.data.get_random_string(), header="Header" + app.data.get_random_string(), footer="Footer" + app.data.get_random_string())
+    new_group = Group(name="Group " + app.data.get_random_string(), header="Header " + app.data.get_random_string(), footer="Footer " + app.data.get_random_string())
     old_groups = app.group.get_group_list()
     # Create the group itself
     app.group.create(new_group)
     assert len(old_groups) + 1 == app.group.count()
-    # new_groups = sorted(new_groups, key=lambda gr: gr.id)
     new_groups = app.group.get_group_list()
     old_groups.append(new_group)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
