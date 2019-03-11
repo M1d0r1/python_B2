@@ -9,7 +9,7 @@ class Group:
         self.id = id
 
     def __repr__(self):
-        return "Group:id=%s,name=%s" % (self.id, self.name)
+        return "Group:id=%s,name=%s, header = %s, footer = %s" % (self.id, self.name, self.header, self.footer)
 
     def __eq__(self, other):
         return (self.id == other.id or self.id is None or other.id is None) and self.name.strip() == other.name.strip()

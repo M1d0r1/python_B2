@@ -1,13 +1,14 @@
 import random
 import string
 
-class RandomDataHelper:
-    def __init__(self, app):
-        self.app = app
+class RandomData:
+
+    def __init__(self):
+        pass
 
     def get_random_string(self):
         ind = random.randrange(20)
-        return ''.join([random.choice(string.ascii_letters + string.digits) for i in range(ind)])
+        return ''.join([random.choice(string.ascii_letters + string.digits+""*10) for i in range(ind)])
 
     def get_random_phone(self):
         return str(random.randrange(1000000,9999999))
