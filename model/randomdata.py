@@ -9,7 +9,9 @@ class RandomData:
     @staticmethod
     def get_random_string():
         ind = random.randrange(20)
-        return ''.join([random.choice(string.ascii_letters + string.digits+" ") for i in range(ind)])
+        s = ''.join([random.choice(string.ascii_letters + string.digits+" ") for i in range(ind)])
+        s.rstrip(" ")
+        return s;
 
     @staticmethod
     def get_random_phone():
