@@ -27,7 +27,7 @@ def test_modify_contact(app):
     if contact.primary_home_phone is not "":
         contact.primary_home_phone = str(int(contact.primary_home_phone) + 1)
     else:
-        contact.primary_home_phone = app.data.get_random_phone()
+        contact.primary_home_phone = RandomData.get_random_phone()
     contact.secondary_address = "%s\n%s" % (contact.secondary_address, RandomData.get_random_string())
     if contact.secondary_home_phone is not "":
         contact.secondary_home_phone = str(int(contact.secondary_home_phone) + 1)

@@ -10,7 +10,7 @@ def test_verify_info_on_home_page(app):
     contact_from_home_page = app.contact.get_data_from_home_page_by_index(ind)
     assert contact_from_edit_page.first_name == contact_from_home_page.first_name
     assert contact_from_edit_page.last_name == contact_from_home_page.last_name
-    assert contact_from_edit_page.primary_address == contact_from_home_page.primary_address
+    assert clear_spaces(contact_from_edit_page.primary_address) == contact_from_home_page.primary_address
     assert contact_from_home_page.all_phones == merge_phones_like_home_page(contact_from_edit_page)
     assert contact_from_home_page.all_emails == merge_emails_like_home_page(contact_from_edit_page)
 
@@ -42,6 +42,9 @@ def merge_phones_like_view_page(home, mobile, work):
 
 def clear(s):
     return re.sub("[- )(]","",s)
+
+def clear_spaces(s):
+    return re.sub(" +"," ",s)
 
 def test_verify_phones_on_view_page(app):
     if app.contact.count() == 0:
