@@ -1,5 +1,6 @@
 from model.group import Group
 from random import randrange
+from model.randomdata import RandomData
 
 
 def test_modify_group(app):
@@ -9,9 +10,9 @@ def test_modify_group(app):
     index = randrange(len(old_groups))
     group = app.group.get_data(index)
     # Prepare data
-    group.name = "%s %s" % (group.name, app.data.get_random_string())
-    group.header = "%s %s" % (group.header, app.data.get_random_string())
-    group.footer = "%s %s" % (group.footer, app.data.get_random_string())
+    group.name = "%s %s" % (group.name, RandomData.get_random_string())
+    group.header = "%s %s" % (group.header, RandomData.get_random_string())
+    group.footer = "%s %s" % (group.footer, RandomData.get_random_string())
     group.id = old_groups[index].id
     # Modify the group
     app.group.modify_by_index(index, group)

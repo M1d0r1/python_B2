@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 import pytest
-from test.randomdata import RandomData
-
-rand = RandomData()
+from model.randomdata import RandomData
 
 testdata = [
 Group(name=name, header=header, footer=footer)
-for name in ["", "Name"+rand.get_random_string()]
-for header in ["", "Header"+rand.get_random_string()]
-for footer in ["", "Footer"+rand.get_random_string()]
+for name in ["", "Name"+RandomData.get_random_string()]
+for header in ["", "Header"+RandomData.get_random_string()]
+for footer in ["", "Footer"+RandomData.get_random_string()]
 ]
 
 @pytest.mark.parametrize("new_group", testdata, ids=[repr(x) for x in testdata])
