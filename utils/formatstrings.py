@@ -1,5 +1,6 @@
 import re
 
+
 class FormatStrings:
 
     def __init__(self):
@@ -16,11 +17,13 @@ class FormatStrings:
     @staticmethod
     def merge_emails_like_home_page(contact):
         return FormatStrings.clear_spaces("\n".join(
-            filter(lambda x: x is not None and FormatStrings.clear(x) != "", [contact.email1, contact.email2, contact.email3])))
+            filter(lambda x: x is not None and FormatStrings.clear(x) != "",
+                   [contact.email1, contact.email2, contact.email3])))
 
     @staticmethod
     def merge_contact_primary_phones_like_view_page(contact):
-        return FormatStrings.merge_phones_like_view_page(contact.primary_home_phone, contact.mobile_phone, contact.work_phone)
+        return FormatStrings.merge_phones_like_view_page(contact.primary_home_phone, contact.mobile_phone,
+                                                         contact.work_phone)
 
     @staticmethod
     def merge_primary_info_like_view_page(contact):
@@ -48,4 +51,3 @@ class FormatStrings:
             return s
         else:
             return re.sub(" \n", "\n", re.sub(" +", " ", s)).rstrip().lstrip()
-
