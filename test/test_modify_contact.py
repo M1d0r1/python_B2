@@ -2,8 +2,8 @@ import os
 import datetime
 from model.contact import Contact
 from random import randrange
-from model.randomdata import RandomData
-
+from utils.randomdata import RandomData
+from utils.formatstrings import FormatStrings
 
 def test_modify_contact(app):
     if app.contact.count() == 0:
@@ -62,6 +62,8 @@ def test_modify_contact(app):
     app.contact.modify_by_index(index, contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
+    contact.first_name = FormatStrings.clear_spaces(contact.first_name)
+    contact.last_name = FormatStrings.clear_spaces(contact.last_name)
     old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
@@ -79,5 +81,7 @@ def test_modify_contact_name(app):
      app.contact.modify_by_index(index, contact)
      assert len(old_contacts) == app.contact.count()
      new_contacts = app.contact.get_contact_list()
+     contact.first_name = FormatStrings.clear_spaces(contact.first_name)
+     contact.last_name = FormatStrings.clear_spaces(contact.last_name)
      old_contacts[index] = contact
      assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)

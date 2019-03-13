@@ -10,7 +10,6 @@ class RandomData:
     def get_random_string():
         ind = random.randrange(20)
         s = ''.join([random.choice(string.ascii_letters + string.digits+" ") for i in range(ind)])
-        s.rstrip(" ")
         return s;
 
     @staticmethod

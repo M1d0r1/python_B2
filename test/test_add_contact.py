@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from model.group import Group
 from model.contact import Contact
 import datetime
 import os
-from model.randomdata import RandomData
+from utils.randomdata import RandomData
 import pytest
+from utils.formatstrings import FormatStrings
 
 birthdate = datetime.date(1980, 11, 20)
 anniversary_date = datetime.date(2005, 3, 14)
@@ -31,8 +31,8 @@ testdata = [
         homepage="https://%s.com" % RandomData.get_random_string(), birthdate=birthdate,
         anniversary_date=anniversary_date,
         notes="here is my note\n" + RandomData.get_random_multistring()))
-    for i in range(5)
-    ]+[Contact(first_name=" ")]
+        for i in range(5)
+     ]+[Contact(first_name=" ")]
 
 @pytest.mark.parametrize("new_contact", testdata, ids=[repr(x) for x in testdata])
 def test_add_contact(app, new_contact):
@@ -41,5 +41,7 @@ def test_add_contact(app, new_contact):
     app.contact.create(new_contact)
     assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()
+    new_contact.first_name = FormatStrings.clear_spaces(new_contact.first_name)
+    new_contact.last_name = FormatStrings.clear_spaces(new_contact.last_name)
     old_contacts.append(new_contact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)

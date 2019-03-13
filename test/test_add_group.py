@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 import pytest
-from model.randomdata import RandomData
+from utils.randomdata import RandomData
 
 testdata = [
 Group(name=name, header=header, footer=footer)
