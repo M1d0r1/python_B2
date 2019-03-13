@@ -6,12 +6,20 @@ from selenium.webdriver.support.ui import Select
 
 
 class Application:
-    def __init__(self):
-        self.wd = webdriver.Firefox()
+    def __init__(self, browser = "firefox", baseurl = "http://localhost/addressbook"):
+        if browser == "firefox":
+            self.wd = webdriver.Firefox()
+        elif browser == "chrome":
+            self.wd = webdriver.Chrome()
+        elif browser == "ie":
+            self.wd = webdriver.Ie()
+        else:
+            raise ValueError("Unknown browser %s" % browser)
         # self.wd.implicitly_wait(1)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
+        self.baseurl = baseurl
 
 
     def open_start_page(self):
@@ -20,7 +28,7 @@ class Application:
                 wd.find_elements_by_xpath("//input[@value='Send e-Mail']")) > 0:
             return
         else:
-            self.wd.get("http://localhost/addressbook/")
+            self.wd.get(self.baseurl)
 
     def navigate_to_groups(self):
         wd = self.wd
