@@ -8,11 +8,11 @@ from utils.formatstrings import FormatStrings
 
 birthdate = datetime.date(1980, 11, 20)
 anniversary_date = datetime.date(2005, 3, 14)
-dir = os.getcwd()
-if dir[len(dir) - 5:len(dir)] == r"\test":
-    photo_keys = dir + r'\Resource\photo.jpg'
+current_dir = os.getcwd()
+if current_dir[len(current_dir) - 5:len(current_dir)] == r"\test":
+    photo_keys = current_dir + r'\Resource\photo.jpg'
 else:
-    photo_keys = dir + r'\test\Resource\photo.jpg'
+    photo_keys = current_dir + r'\test\Resource\photo.jpg'
 
 testdata = [
                (Contact(first_name="Name" + RandomData.get_random_string(),

@@ -17,11 +17,11 @@ def test_modify_contact(app):
     contact.middle_name = "%s %s" % (contact.middle_name, RandomData.get_random_string())
     contact.last_name = "%s %s" % (contact.last_name, RandomData.get_random_string())
     contact.nickname = "%s %s" % (contact.nickname, RandomData.get_random_string())
-    dir = os.getcwd()
-    if dir[len(dir) - 5:len(dir)] == r"\test":
-        contact.photo_keys = dir + r'\Resource\photo2.jpg'
+    current_dir = os.getcwd()
+    if current_dir[len(current_dir) - 5:len(current_dir)] == r"\test":
+        contact.photo_keys = current_dir + r'\Resource\photo2.jpg'
     else:
-        contact.photo_keys = dir + r'\test\Resource\photo2.jpg'
+        contact.photo_keys = current_dir + r'\test\Resource\photo2.jpg'
     contact.title = "%s %s" % (contact.title, RandomData.get_random_string())
     contact.company = "%s %s" % (contact.company, RandomData.get_random_string())
     contact.primary_address = "%s\n%s" % (contact.primary_address, RandomData.get_random_string())
