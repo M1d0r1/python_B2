@@ -1,20 +1,24 @@
 import pytest
 from fixture.application import Application
+import json
+import os.path
 
 fixture = None
-
+target = None
 
 # noinspection PyUnusedLocal
 @pytest.fixture
 def app(request):
     global fixture
+    global target
     browser = request.config.getoption("--browser")
-    baseurl = request.config.getoption("--baseurl")
-    if fixture is None:
-        fixture = Application(browser=browser, baseurl=baseurl)
-    elif not fixture.is_valid():
-        fixture = Application(browser=browser, baseurl=baseurl)
-    fixture.session.ensure_login(username="admin", password="secret")
+    if target is None:
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
+        with open(config_file) as file:
+            target = json.load(file)
+    if fixture is None or not fixture.is_valid():
+        fixture = Application(browser=browser, baseurl=target["baseUrl"])
+    fixture.session.ensure_login(username=target['username'], password=target['password'])
     return fixture
 
 
@@ -29,4 +33,4 @@ def teardown(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action = "store", default = "firefox")
-    parser.addoption("--baseurl", action = "store", default = "http://localhost/addressbook")
+    parser.addoption("--target", action = "store", default = "target.json")
