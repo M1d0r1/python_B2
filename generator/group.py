@@ -1,7 +1,7 @@
 from model.group import Group
 from utils.randomdata import RandomData
 import os.path
-import json
+import jsonpickle
 import getopt
 import sys
 
@@ -26,5 +26,6 @@ testdata = [Group(name="Name" + RandomData.get_random_string(),header="Header" +
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)),  "..", f)
 
-with open(file, "w") as f:
-    f.write(json.dumps(testdata, default=lambda x: x.__dict__, indent = 2))
+with open(file, "w") as out_file:
+    jsonpickle.set_encoder_options("json", indent = 2)
+    out_file.write(jsonpickle.encode(testdata))
