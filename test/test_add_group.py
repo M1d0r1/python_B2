@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 import pytest
-from utils.randomdata import RandomData
-
-testdata = [Group(name="Name" + RandomData.get_random_string(),header="Header" + RandomData.get_random_string(), footer = "Footer" + RandomData.get_random_string())
-            for i in range(5)
-            ]+[Group(name="",footer="", header="")]
 
 
 @pytest.mark.parametrize("new_group", testdata, ids=[repr(x) for x in testdata])
