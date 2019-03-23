@@ -2,6 +2,7 @@
 from model.contact import Contact
 from utils.formatstrings import FormatStrings
 
+
 def test_add_contact(app, json_contacts):
     new_contact = json_contacts
     app.open_start_page()

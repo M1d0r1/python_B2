@@ -1,9 +1,9 @@
-import os
 import datetime
-from model.contact import Contact
 from random import randrange
-from utils.randomdata import RandomData
+
+from model.contact import Contact
 from utils.formatstrings import FormatStrings
+from utils.randomdata import RandomData
 
 
 def test_modify_contact(app):

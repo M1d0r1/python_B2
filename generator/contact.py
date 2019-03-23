@@ -7,7 +7,7 @@ import sys
 import datetime
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:],"n:f:",["number of contacts", "file"])
+    opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of contacts", "file"])
 except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
@@ -23,8 +23,8 @@ for o, a in opts:
 
 birthdate = datetime.date(1980, 11, 20)
 anniversary_date = datetime.date(2005, 3, 14)
-photo_keys = os.path.dirname(os.path.abspath(__file__))+"\\resource\\photo.jpg"
-#photo_keys = os.path.join(os.path.dirname(os.path.abspath(__file__)), "/resource/photo.jpg")
+photo_keys = os.path.dirname(os.path.abspath(__file__)) + "\\resource\\photo.jpg"
+# photo_keys = os.path.join(os.path.dirname(os.path.abspath(__file__)), "/resource/photo.jpg")
 
 testdata = [
                (Contact(first_name="Name" + RandomData.get_random_string(),
@@ -47,8 +47,8 @@ testdata = [
                for i in range(5)
            ] + [Contact(first_name=" ")]
 
-file = os.path.join(os.path.dirname(os.path.abspath(__file__)),  "..", f)
+file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 
 with open(file, "w") as out_file:
-    jsonpickle.set_encoder_options("json", indent = 2)
+    jsonpickle.set_encoder_options("json", indent=2)
     out_file.write(jsonpickle.encode(testdata))
