@@ -4,9 +4,7 @@ from model.group import Group
 
 def test_add_group(app, json_groups):
     new_group = json_groups
-    # Prepare data
     old_groups = app.group.get_group_list()
-    # Create the group itself
     app.group.create(new_group)
     assert len(old_groups) + 1 == app.group.count()
     new_groups = app.group.get_group_list()
