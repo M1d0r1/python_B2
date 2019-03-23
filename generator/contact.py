@@ -23,11 +23,8 @@ for o, a in opts:
 
 birthdate = datetime.date(1980, 11, 20)
 anniversary_date = datetime.date(2005, 3, 14)
-current_dir = os.getcwd()
-if current_dir[len(current_dir) - 5:len(current_dir)] == r"\test":
-    photo_keys = current_dir + r'\Resource\photo.jpg'
-else:
-    photo_keys = current_dir + r'\test\Resource\photo.jpg'
+photo_keys = os.path.dirname(os.path.abspath(__file__))+"\\resource\\photo.jpg"
+#photo_keys = os.path.join(os.path.dirname(os.path.abspath(__file__)), "/resource/photo.jpg")
 
 testdata = [
                (Contact(first_name="Name" + RandomData.get_random_string(),

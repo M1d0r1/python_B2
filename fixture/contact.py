@@ -61,7 +61,6 @@ class ContactHelper:
         self.app.fill_text_field("middlename", contact.middle_name)
         self.app.fill_text_field("lastname", contact.last_name)
         self.app.fill_text_field("nickname", contact.nickname)
-        self.app.fill_file_field("photo", contact.photo_keys)
         self.app.fill_text_field("title", contact.title)
         self.app.fill_text_field("company", contact.company)
         self.app.fill_text_field("address", contact.primary_address)
