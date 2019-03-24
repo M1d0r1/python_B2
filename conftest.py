@@ -22,8 +22,6 @@ def load_config(file):
 def app(request):
     global fixture
     browser = request.config.getoption("--browser")
-    test = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
-    print(test)
     web_config = load_config(os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target")))["web"]
     if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, baseurl=web_config["baseUrl"])
