@@ -12,10 +12,13 @@ class Group:
         return "Group:id=%s,name=%s, header = %s, footer = %s" % (self.id, self.name, self.header, self.footer)
 
     def __eq__(self, other):
-        return (self.id == other.id or self.id is None or other.id is None) and self.name.strip() == other.name.strip()
+        return (self.id == other.id or self.id is None or other.id is None) and self.name == other.name
 
     def id_or_max(self):
         if self.id:
             return int(self.id)
         else:
             return maxsize
+
+    def clear(self):
+        return Group(id = self.id, name = self.name.strip(), footer = self.footer.strip(), header = self.header.strip())

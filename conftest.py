@@ -30,7 +30,7 @@ def app(request):
 
 @pytest.fixture(scope = "session")
 def db(request):
-    db_config = load_config(request.config.option("--target"))["db"]
+    db_config = load_config(os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target")))["db"]
     dbfixture = DbFixture(host = db_config["host"], name = db_config["name"], user = db_config["user"], password = db_config["password"])
     def fin():
         dbfixture.destroy()
