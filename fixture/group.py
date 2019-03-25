@@ -25,6 +25,15 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
+    def delete_by_id(self, id):
+        self.app.navigate_to_groups()
+        wd = self.app.wd
+        self.select_by_id(id)
+        wd.find_element_by_name("delete").click()
+        self.app.navigate_to_groups()
+        self.group_cache = None
+
+
    # def delete_first(self):
    #     self.delete_by_index(0)
 
@@ -40,6 +49,19 @@ class GroupHelper:
         self.app.navigate_to_groups()
         self.group_cache = None
 
+    def modify_by_id(self, id, new_group_data):
+        self.app.navigate_to_groups()
+        # Init group modification
+        wd = self.app.wd
+        self.select_by_id(id)
+        wd.find_element_by_name("edit").click()
+        self.fill_form(new_group_data)
+        # Submit group modification and navigate to groups
+        wd.find_element_by_name("update").click()
+        self.app.navigate_to_groups()
+        self.group_cache = None
+
+
    # def modify_first(self, new_group_data):
    #    self.modify_by_index(0, new_group_data)
 
@@ -47,15 +69,31 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
     def fill_form(self, group):
         self.app.fill_text_field("group_name", group.name)
         self.app.fill_text_field("group_header", group.header)
         self.app.fill_text_field("group_footer", group.footer)
 
-    def get_data(self, index):
+    def get_data_by_index(self, index):
         wd = self.app.wd
         self.app.navigate_to_groups()
         self.select_by_index(index)
+        wd.find_element_by_name("edit").click()
+        name = wd.find_element_by_name("group_name").get_attribute('value')
+        header = wd.find_element_by_name("group_header").get_attribute('value')
+        footer = wd.find_element_by_name("group_footer").get_attribute('value')
+        group = Group(name, header, footer)
+        self.app.navigate_to_groups()
+        return group
+
+    def get_data_by_id(self, id):
+        wd = self.app.wd
+        self.app.navigate_to_groups()
+        self.select_by_id(id)
         wd.find_element_by_name("edit").click()
         name = wd.find_element_by_name("group_name").get_attribute('value')
         header = wd.find_element_by_name("group_header").get_attribute('value')

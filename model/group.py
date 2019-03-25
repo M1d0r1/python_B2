@@ -1,5 +1,5 @@
 from sys import maxsize
-
+from utils.formatstrings import FormatStrings
 
 class Group:
     def __init__(self, name=None, header=None, footer=None, id=None):
@@ -21,4 +21,4 @@ class Group:
             return maxsize
 
     def clear(self):
-        return Group(id = self.id, name = self.name.strip(), footer = self.footer.strip(), header = self.header.strip())
+        return Group(id = self.id, name = FormatStrings.clear_spaces(self.name),  header = FormatStrings.clear_spaces(self.header),  footer = FormatStrings.clear_spaces(self.footer))
