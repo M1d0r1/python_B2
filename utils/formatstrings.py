@@ -49,10 +49,12 @@ class FormatStrings:
     def clear_spaces(s):
         if s is None:
             return s
+        elif s==" ":
+            return s
         else:
             return re.sub(" \n", "\n", re.sub(" +", " ", s)).rstrip().lstrip()
 
-    def month_number(s):
+    def month_number(self,s):
         months = dict(JAN=1, FEB=2, MAR=3, APR=4, MAY=5, JUN=6, JUL=7, AUG=8, SEP=9, OCT=10, NOV=11, DEC=12)
         try:
             return int(months[s[0:3].upper()])

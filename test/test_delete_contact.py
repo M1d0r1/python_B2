@@ -11,5 +11,4 @@ def test_delete_contact(app, db):
     app.contact.delete_by_id(contact.id)
     old_contacts.remove(contact)
     new_contacts = db.get_contact_list()
-    print("old ",old_contacts,"new ", new_contacts)
     assert old_contacts == new_contacts

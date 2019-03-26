@@ -1,13 +1,13 @@
 import datetime
 import random
+
 from model.contact import Contact
-from utils.formatstrings import FormatStrings
 from utils.randomdata import RandomData
 
 
 def test_modify_contact(app, db):
     if len(db.get_contact_list()) == 0:
-        app.contact.create(Contact(first_name="Contact for deletion"))
+        app.contact.create(Contact(first_name="Contact for modification"))
     old_contacts = db.get_contact_list()
     old_contact = random.choice(old_contacts)
     # Prepare data
@@ -48,33 +48,30 @@ def test_modify_contact(app, db):
         contact.birthdate = datetime.date(old_contact.birthdate.year + 1, old_contact.birthdate.month,
                                           (old_contact.birthdate.day + 1) % 27 + 1)
     if old_contact.anniversary_date is not None:
-        contact.anniversary_date = datetime.date(old_contact.anniversary_date.year + 1, old_contact.anniversary_date.month,
+        contact.anniversary_date = datetime.date(old_contact.anniversary_date.year + 1,
+                                                 old_contact.anniversary_date.month,
                                                  (old_contact.anniversary_date.day + 1) % 27 + 1)
     contact.notes = "%s\n%s" % (RandomData.get_random_multistring(), old_contact.notes)
     app.open_start_page()
     contact.id = old_contact.id
     # Modify the contact
     app.contact.modify_by_id(contact.id, contact)
-    new_contacts = app.contact.get_contact_list()
+    new_contacts = db.get_contact_list()
     old_contacts.remove(old_contact)
-    old_contacts.append(contact)
+    old_contacts.append(contact.clear())
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
-# def test_modify_contact_name(app):
-#     if app.contact.count() == 0:
-#         app.contact.create(Contact(first_name="Contact for modification"))
-#     app.open_start_page()
-#     old_contacts = app.contact.get_contact_list()
-#     index = randrange(len(old_contacts))
-#     contact = Contact(first_name="New Contact Name Only " + str(index))
-#     contact.id = old_contacts[index].id
-#     contact.last_name = old_contacts[index].last_name
-#     # Modify the contact
-#     app.contact.modify_by_index(index, contact)
-#     assert len(old_contacts) == app.contact.count()
-#     new_contacts = app.contact.get_contact_list()
-#     contact.first_name = FormatStrings.clear_spaces(contact.first_name)
-#     contact.last_name = FormatStrings.clear_spaces(contact.last_name)
-#     old_contacts[index] = contact
-#     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+def test_modify_contact_name(app, db):
+    if len(db.get_contact_list()) == 0:
+        app.contact.create(Contact(first_name="Contact for modification"))
+    old_contacts = db.get_contact_list()
+    old_contact = random.choice(old_contacts)
+    contact = old_contact
+    contact.first_name = old_contact.first_name + RandomData.get_random_string()
+    # Modify the contact
+    app.contact.modify_by_id(contact.id, contact)
+    new_contacts = db.get_contact_list()
+    old_contacts.remove(old_contact)
+    old_contacts.append(contact.clear())
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)

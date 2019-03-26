@@ -1,4 +1,5 @@
 from sys import maxsize
+from utils.formatstrings import FormatStrings
 
 
 class Contact:
@@ -43,3 +44,6 @@ class Contact:
             return int(self.id)
         else:
             return maxsize
+
+    def clear(self):
+        return Contact(id = self.id, first_name= FormatStrings.clear_spaces(self.first_name),  last_name = FormatStrings.clear_spaces(self.last_name))

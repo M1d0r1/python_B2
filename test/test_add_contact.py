@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
-from utils.formatstrings import FormatStrings
 
 
 def test_add_contact(app, db, json_contacts):

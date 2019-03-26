@@ -70,14 +70,10 @@ class ContactHelper:
     def modify_by_id(self, id, contact):
         wd = self.app.wd
         self.app.open_start_page()
-        # Init modification
         #wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
-        wd.find_element_by_xpath("//tr[4]/td[8]/a/img").click()
-        # Fill the form
+        wd.find_element_by_xpath("//a[@href='edit.php?id=%s']" % id).click()
         self.fill_form(contact)
-        # Submit contact creation
         wd.find_element_by_name("update").click()
-        self.app.open_start_page()
         self.contact_cache = None
 
     # def modify_first(self, contact):

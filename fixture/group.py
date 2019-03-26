@@ -14,7 +14,6 @@ class GroupHelper:
         self.fill_form(group)
         # Submit group creation and navigate to groups
         wd.find_element_by_name("submit").click()
-        self.app.navigate_to_groups()
         self.group_cache = None
 
     def delete_by_index(self, index):

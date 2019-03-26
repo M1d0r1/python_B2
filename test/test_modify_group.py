@@ -33,5 +33,5 @@ def test_modify_group_name(app, db):
     app.group.modify_by_id(old_group.id, group)
     new_groups = db.get_group_list()
     old_groups.remove(old_group)
-    old_groups.append(group)
+    old_groups.append(group.clear())
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
