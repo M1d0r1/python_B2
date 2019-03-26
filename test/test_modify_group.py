@@ -8,13 +8,12 @@ def test_modify_group(app, db):
         app.group.create(Group(name="Group for modification"))
     old_groups = db.get_group_list()
     old_group = random.choice(old_groups)
-    group = app.group.get_data_by_id(old_group.id)
+    group = Group()
     # Prepare data
-    group.name = "%s %s" % (group.name, RandomData.get_random_string())
-    group.header = "%s %s" % (group.header, RandomData.get_random_string())
-    group.footer = "%s %s" % (group.footer, RandomData.get_random_string())
+    group.name = "%s %s" % (old_group.name, RandomData.get_random_string())
+    group.header = "%s %s" % (old_group.header, RandomData.get_random_string())
+    group.footer = "%s %s" % (old_group.footer, RandomData.get_random_string())
     group.id = old_group.id
-    print(group)
     # Modify the group
     app.group.modify_by_id(group.id, group)
     new_groups = db.get_group_list()
