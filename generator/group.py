@@ -21,7 +21,7 @@ for o, a in opts:
         f = a
 
 testdata = [Group(name="Name" + RandomData.get_random_string(),header="Header" + RandomData.get_random_string(), footer = "Footer" + RandomData.get_random_string())
-            for i in range(n)
+            for i in range(n-1)
             ]+[Group(name="",footer="", header="")]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)),  "..", f)

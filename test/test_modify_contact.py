@@ -5,11 +5,12 @@ from model.contact import Contact
 from utils.randomdata import RandomData
 
 
-def test_modify_contact(app, db):
+def test_modify_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(first_name="Contact for modification"))
     old_contacts = db.get_contact_list()
     old_contact = random.choice(old_contacts)
+    print("CONTACT TO MODIFY: ", old_contact.id)
     # Prepare data
     contact = Contact()
     contact.first_name = "%s %s" % (old_contact.first_name, RandomData.get_random_string())
@@ -58,15 +59,21 @@ def test_modify_contact(app, db):
     app.contact.modify_by_id(contact.id, contact)
     new_contacts = db.get_contact_list()
     old_contacts.remove(old_contact)
-    old_contacts.append(contact.clear())
+    old_contacts.append(contact)
+    print("OLD SORTED: ", sorted(old_contacts, key=Contact.id_or_max))
+    print("NEW SORTED: ", sorted(new_contacts, key=Contact.id_or_max))
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        for i in range(0, len(new_contacts)):
+            new_contacts[i] = new_contacts[i].clear()
+        assert sorted(new_contacts, key = Contact.id_or_max) == sorted(app.contact.get_contact_list(), key = Contact.id_or_max)
 
-
-def test_modify_contact_name(app, db):
+def test_modify_contact_name(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(first_name="Contact for modification"))
     old_contacts = db.get_contact_list()
     old_contact = random.choice(old_contacts)
+    print("CONTACT TO MODIFY: ", old_contact.id)
     contact = old_contact
     contact.first_name = old_contact.first_name + RandomData.get_random_string()
     # Modify the contact
@@ -74,4 +81,10 @@ def test_modify_contact_name(app, db):
     new_contacts = db.get_contact_list()
     old_contacts.remove(old_contact)
     old_contacts.append(contact.clear())
+    print("OLD SORTED: ", sorted(old_contacts, key=Contact.id_or_max))
+    print("NEW SORTED: ", sorted(new_contacts, key=Contact.id_or_max))
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        for i in range(0, len(new_contacts)):
+            new_contacts[i] = new_contacts[i].clear()
+        assert sorted(new_contacts, key = Contact.id_or_max) == sorted(app.contact.get_contact_list(), key = Contact.id_or_max)

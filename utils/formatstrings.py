@@ -49,8 +49,8 @@ class FormatStrings:
     def clear_spaces(s):
         if s is None:
             return s
-        elif s==" ":
-            return s
+        # elif s==" ":
+        #     return s
         else:
             return re.sub(" \n", "\n", re.sub(" +", " ", s)).rstrip().lstrip()
 
