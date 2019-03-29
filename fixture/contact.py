@@ -243,3 +243,12 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_start_page()
         wd.find_element_by_xpath("//a[@href='view.php?id=%s']" % id).click()
+
+    def add_to_group(self, contact, group):
+        wd = self.app.wd
+        self.app.open_start_page()
+        self.select_by_id(contact.id)
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_value(group.id)
+        wd.find_element_by_name("add").click()
+        self.app.open_start_page()
