@@ -49,7 +49,6 @@ class ContactHelper:
 
     def select_by_id(self, id):
         wd = self.app.wd
-        print(" ", id)
         wd.find_element_by_id(id).click()
 
     # def select_first(self):
@@ -208,7 +207,39 @@ class ContactHelper:
         #email3 = re.search("(.*)@(.*).(.*)", text).group(3)
         return Contact(primary_home_phone=homephone, mobile_phone=mobilephone, work_phone=workphone, secondary_home_phone=secondaryphone)
 
+    def get_data_from_view_page_by_id(self, id):
+        wd = self.app.wd
+        self.open_contact_to_view_by_id(id)
+        text = wd.find_element_by_id("content").text
+        if re.search("H: (.*)", text) is not None:
+            homephone = re.search("H: (.*)", text).group(1)
+        else:
+            homephone = ""
+        if re.search("M: (.*)", text) is not None:
+            mobilephone = re.search("M: (.*)", text).group(1)
+        else:
+            mobilephone = ""
+        if re.search("W: (.*)", text) is not None:
+            workphone = re.search("W: (.*)", text).group(1)
+        else:
+            workphone = ""
+       # all_phones = homephone + mobilephone + workphone
+        if re.search("P: (.*)", text) is not None:
+            secondaryphone = re.search("P: (.*)", text).group(1)
+        else:
+            secondaryphone = ""
+        #email1 = re.search("(.*)@(.*).(.*)",text).group(1)+re.search("(.*)@(.*).(.*)",text).group(2)+re.search("(.*)@(.*).(.*)",text).group(3)
+       # email2 = re.search("(.*)@(.*).(.*)", text).grou
+        #email3 = re.search("(.*)@(.*).(.*)", text).group(3)
+        return Contact(primary_home_phone=homephone, mobile_phone=mobilephone, work_phone=workphone, secondary_home_phone=secondaryphone)
+
+
     def open_contact_to_view_by_index(self, index):
         wd = self.app.wd
         self.app.open_start_page()
         wd.find_elements_by_xpath("//img[@alt='Details']")[index].click()
+
+    def open_contact_to_view_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_start_page()
+        wd.find_element_by_xpath("//a[@href='view.php?id=%s']" % id).click()

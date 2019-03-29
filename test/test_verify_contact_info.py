@@ -6,10 +6,8 @@ from model.contact import Contact
 def test_verify_info_on_home_page(app, db):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(first_name="Contact for verification"))
-   # ind = random.randrange(app.contact.count())
     db_list = sorted(db.get_contact_list(), key = Contact.id_or_max)
     home_page_list = []
-    sorted_home_page_list = []
     for ind in range(0, app.contact.count()):
         contact_from_home_page = app.contact.get_data_from_home_page_by_index(ind)
         home_page_list.append(contact_from_home_page)
@@ -24,11 +22,17 @@ def test_verify_info_on_home_page(app, db):
         assert sorted_home_page_list[ind].all_emails == FormatStrings.merge_emails_like_home_page(db_list[ind])
 
 
-def test_verify_phones_on_view_page(app):
-    if app.contact.count() == 0:
-        app.contact.create(Contact(first_name="Contact for modification"))
-    ind = random.randrange(app.contact.count())
-    contact_from_edit_page = app.contact.get_data_from_edit_page_by_index(ind)
-    contact_from_view_page = app.contact.get_data_from_view_page_by_index(ind)
-    assert FormatStrings.merge_contact_primary_phones_like_view_page(
-        contact_from_view_page) == FormatStrings.merge_contact_primary_phones_like_view_page(contact_from_edit_page)
+def test_verify_phones_on_view_page(app, db):
+    if len(db.get_contact_list()) == 0:
+        app.contact.create(Contact(first_name="Contact for verification"))
+    db_list = sorted(db.get_contact_list(), key=Contact.id_or_max)
+    view_page_list = []
+    for contact in db_list:
+        contact_from_view_page = app.contact.get_data_from_view_page_by_id(contact.id)
+        view_page_list.append(contact_from_view_page)
+    print("DB LIST: ", db_list)
+    print("VIEW LIST: ", view_page_list)
+    for ind in range(0, app.contact.count()):
+        print("DB: ", FormatStrings.merge_contact_primary_phones_like_view_page(db_list[ind]))
+        print("VIEW: ", FormatStrings.merge_contact_primary_phones_like_view_page(view_page_list[ind]))
+        assert FormatStrings.merge_contact_primary_phones_like_view_page(db_list[ind]) == FormatStrings.merge_contact_primary_phones_like_view_page(view_page_list[ind])
