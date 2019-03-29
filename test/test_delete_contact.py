@@ -1,6 +1,6 @@
 from model.contact import Contact
 import random
-
+from time import sleep
 
 def test_delete_contact(app, db, check_ui):
     # for i in range (0,200):
@@ -11,6 +11,7 @@ def test_delete_contact(app, db, check_ui):
     app.contact.delete_by_id(contact.id)
     print("CONTACT TO DELETE: ", contact.id)
     old_contacts.remove(contact)
+    sleep(1)
     new_contacts = db.get_contact_list()
     print("OLD SORTED: ", sorted(old_contacts, key=Contact.id_or_max))
     print("NEW SORTED: ", sorted(new_contacts, key=Contact.id_or_max))

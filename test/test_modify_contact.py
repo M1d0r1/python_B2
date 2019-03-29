@@ -66,6 +66,8 @@ def test_modify_contact(app, db, check_ui):
     if check_ui:
         for i in range(0, len(new_contacts)):
             new_contacts[i] = new_contacts[i].clear()
+        print("NEW SORTED CLEARED: ", sorted(new_contacts, key=Contact.id_or_max))
+        print("FROM DB: ", sorted(app.contact.get_contact_list(), key=Contact.id_or_max))
         assert sorted(new_contacts, key = Contact.id_or_max) == sorted(app.contact.get_contact_list(), key = Contact.id_or_max)
 
 def test_modify_contact_name(app, db, check_ui):
@@ -80,7 +82,7 @@ def test_modify_contact_name(app, db, check_ui):
     app.contact.modify_by_id(contact.id, contact)
     new_contacts = db.get_contact_list()
     old_contacts.remove(old_contact)
-    old_contacts.append(contact.clear())
+    old_contacts.append(contact)
     print("OLD SORTED: ", sorted(old_contacts, key=Contact.id_or_max))
     print("NEW SORTED: ", sorted(new_contacts, key=Contact.id_or_max))
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
