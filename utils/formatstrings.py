@@ -63,13 +63,9 @@ class FormatStrings:
         else:
             return re.sub("\r\n", "\n", s)
 
-
-
-    def month_number(self,s):
+    def month_number(self, s):
         months = dict(JAN=1, FEB=2, MAR=3, APR=4, MAY=5, JUN=6, JUL=7, AUG=8, SEP=9, OCT=10, NOV=11, DEC=12)
         try:
             return int(months[s[0:3].upper()])
         except KeyError:
             return 0
-
-
