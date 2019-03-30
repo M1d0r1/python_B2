@@ -7,7 +7,8 @@ def test_add_contact_in_group(app, db, orm, check_ui):
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name="Group for adding contacts"))
     groups = db.get_group_list()
-    group = random.choice(groups)
+    # group = random.choice(groups)
+    group = Group(id="1511")
     old_contacts_in_group = orm.get_contacts_in_group(group)
     if len(orm.get_contacts_not_in_group(group)) == 0:
         app.contact.create(Contact(first_name="Contact for adding to group"))

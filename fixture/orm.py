@@ -1,5 +1,5 @@
 from pony.orm import *
-import datetime
+from datetime import datetime
 from model.group import Group
 from model.contact import Contact
 from pymysql.converters import decoders
@@ -22,27 +22,27 @@ class ORMFixture:
         id = PrimaryKey(int, column="id")
         firstname = Optional(str, column="firstname")
         lastname = Optional(str, column="lastname")
-        deprecated = Optional(datetime.datetime, column="deprecated")
+        deprecated = Optional(datetime, column="deprecated")
         groups = Set(lambda: ORMFixture.ORMGroup, table="address_in_groups", column = "group_id", reverse ="contacts", lazy = True)
 
     def __init__(self, host, name, user, password):
-        self.db.bind("mysql", host = host, name = name, user = user, password = password, conv = decoders)
+        self.db.bind("mysql", host = host, database = name, user = user, password = password, conv = decoders)
         self.db.generate_mapping()
         sql_debug(True)
 
-    def convert_groups_to_model(self, ormgroups):
-        def convert(ormgroup):
-            return Group(id = str(ormgroup.id), name = ormgroup.name, header=ormgroup.header, footer=ormgroup.footer)
-        return list(map(convert, ormgroups))
-
-    def convert_contacts_to_model(self, ormcontacts):
-        def convert(ormcontact):
-            return Contact(id = str(ormcontact.id), firstname = ormcontact.firstname, lastname = ormcontact.lastname)
-        return list(map(convert, ormcontacts))
+    def convert_groups_to_model(self, groups):
+        def convert(group):
+            return Group(id = str(group.id), name = group.name, header=group.header, footer=group.footer)
+        return list(map(convert, groups))
 
     @db_session
     def get_group_list(self):
         return self.convert_groups_to_model(select(g for g in ORMFixture.ORMGroup))
+
+    def convert_contacts_to_model(self, contacts):
+        def convert(contact):
+            return Contact(id = str(contact.id), first_name = contact.firstname, last_name = contact.lastname)
+        return list(map(convert, contacts))
 
     @db_session
     def get_contact_list(self):
@@ -50,7 +50,9 @@ class ORMFixture:
 
     @db_session
     def get_contacts_in_group(self, group):
-        orm_group = list(select (g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
+        orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
+        print(orm_group)
+        print(list(orm_group.contacts))
         return self.convert_contacts_to_model(orm_group.contacts)
 
     @db_session
