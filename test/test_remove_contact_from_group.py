@@ -10,8 +10,13 @@ def test_remove_contact_from_group(app, db, orm, check_ui):
     if len(orm.get_group_list()) == len(orm.get_empty_group_list()):
         new_group = Group(name="Group for removing contacts")
         app.group.create(new_group)
-        contact = random.choice(orm.get_contacts_not_in_group(new_group))
-        app.contact.add_to_group(contact, new_group)
+        sorted_groups = sorted(orm.get_group_list(), key = Group.id_or_max)
+        new_group.id = sorted_groups[-1].id
+        new_contact = Contact(first_name = "Contact for removing")
+        app.contact.create(new_contact)
+        sorted_contacts = sorted(orm.get_contact_list(), key=Contact.id_or_max)
+        new_contact.id = sorted_contacts[-1].id
+        app.contact.add_to_group(new_contact, new_group)
     groups = orm.get_not_empty_group_list()
     group = random.choice(groups)
     old_contacts_in_group = orm.get_contacts_in_group(group)
