@@ -1,7 +1,0 @@
-CONTACT TO MODIFY:  984
-OLD SORTED:  [
-Contact:id=984, first_name=NameYFljUz70 ay1R32ZOv2d2NGLilf m3QQKzw0FU0 CN, last_name=Last namemlHdofFPzX s8Z6kY3hcFZDmT 9, 
-Contact:id=987, first_name= , last_name=]
-NEW SORTED:  [
-Contact:id=984, first_name=NameYFljUz70 ay1R32ZOv2d2NGLilf m3QQKzw0FU0 CN, last_name=Last namemlHdofFPzX s8Z6kY3hcFZDmT 9, 
-Contact:id=987, first_name= , last_name=]

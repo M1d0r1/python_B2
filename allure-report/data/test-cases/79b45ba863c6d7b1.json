@@ -1,0 +1,231 @@
+{
+  "uid" : "79b45ba863c6d7b1",
+  "name" : "test_modify_group",
+  "fullName" : "test.test_modify_group#test_modify_group",
+  "historyId" : "1d3e870d45771cd7240794e3fef8f904",
+  "time" : {
+    "start" : 1555623408013,
+    "stop" : 1555623412264,
+    "duration" : 4251
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1555623408013,
+      "stop" : 1555623408013,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555623355748,
+      "stop" : 1555623355749,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555623407988,
+      "stop" : 1555623408013,
+      "duration" : 25
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1555623355749,
+      "stop" : 1555623355758,
+      "duration" : 9
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "If there are no group create one",
+      "time" : {
+        "start" : 1555623408013,
+        "stop" : 1555623408014,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Given a list of groups and the data for modification",
+      "time" : {
+        "start" : 1555623408014,
+        "stop" : 1555623408015,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When modifying the group",
+      "time" : {
+        "start" : 1555623408015,
+        "stop" : 1555623412262,
+        "duration" : 4247
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then the new list of groups is equal to the old list with a modified group",
+      "time" : {
+        "start" : 1555623412262,
+        "stop" : 1555623412264,
+        "duration" : 2
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "3a6d55122040abed",
+      "name" : "log",
+      "source" : "3a6d55122040abed.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "52da08f080f0d3d0",
+      "name" : "stdout",
+      "source" : "52da08f080f0d3d0.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "886ca6ca77390ccd",
+      "name" : "stderr",
+      "source" : "886ca6ca77390ccd.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 4,
+    "hasContent" : true,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555623423483,
+      "stop" : 1555623424115,
+      "duration" : 632
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555623423481,
+      "stop" : 1555623423482,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_modify_group"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "15600-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_modify_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "79b45ba863c6d7b1.json",
+  "parameterValues" : [ ]
+}

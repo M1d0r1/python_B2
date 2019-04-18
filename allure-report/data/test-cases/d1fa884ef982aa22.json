@@ -1,0 +1,231 @@
+{
+  "uid" : "d1fa884ef982aa22",
+  "name" : "test_modify_contact",
+  "fullName" : "test.test_modify_contact#test_modify_contact",
+  "historyId" : "8138e13b8cb9c255560ccd2182f72f27",
+  "time" : {
+    "start" : 1555623398285,
+    "stop" : 1555623403031,
+    "duration" : 4746
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1555623398284,
+      "stop" : 1555623398284,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555623355748,
+      "stop" : 1555623355749,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555623398260,
+      "stop" : 1555623398284,
+      "duration" : 24
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1555623355749,
+      "stop" : 1555623355758,
+      "duration" : 9
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "If there are no contacts create one",
+      "time" : {
+        "start" : 1555623398285,
+        "stop" : 1555623398286,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Given list of contacts and the data for contact update",
+      "time" : {
+        "start" : 1555623398286,
+        "stop" : 1555623398356,
+        "duration" : 70
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When modifying the contact",
+      "time" : {
+        "start" : 1555623398356,
+        "stop" : 1555623403029,
+        "duration" : 4673
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then the new contact list is equal to the old one with the contact modified",
+      "time" : {
+        "start" : 1555623403029,
+        "stop" : 1555623403030,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "3855ef028ee70d35",
+      "name" : "log",
+      "source" : "3855ef028ee70d35.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "af6cf7328e88953e",
+      "name" : "stdout",
+      "source" : "af6cf7328e88953e.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "a6d950c2aea7284a",
+      "name" : "stderr",
+      "source" : "a6d950c2aea7284a.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 4,
+    "hasContent" : true,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555623423483,
+      "stop" : 1555623424115,
+      "duration" : 632
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555623423481,
+      "stop" : 1555623423482,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_modify_contact"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "15600-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_modify_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d1fa884ef982aa22.json",
+  "parameterValues" : [ ]
+}

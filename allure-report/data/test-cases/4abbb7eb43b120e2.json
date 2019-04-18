@@ -1,0 +1,186 @@
+{
+  "uid" : "4abbb7eb43b120e2",
+  "name" : "test_verify_contact_info_on_home_page",
+  "fullName" : "test.test_db_matches_ui#test_verify_contact_info_on_home_page",
+  "historyId" : "2ee66d1e2b686c17005268bc0036436c",
+  "time" : {
+    "start" : 1555623391837,
+    "stop" : 1555623392277,
+    "duration" : 440
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555623355748,
+      "stop" : 1555623355749,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555623391821,
+      "stop" : 1555623391836,
+      "duration" : 15
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1555623355749,
+      "stop" : 1555623355758,
+      "duration" : 9
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given list of contacts got from home page and list of contacts got from db",
+      "time" : {
+        "start" : 1555623391837,
+        "stop" : 1555623392267,
+        "duration" : 430
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then the info in the lists is equal",
+      "time" : {
+        "start" : 1555623392267,
+        "stop" : 1555623392277,
+        "duration" : 10
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "d5760af10341995a",
+      "name" : "log",
+      "source" : "d5760af10341995a.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "5d99dc86bafd8fb8",
+      "name" : "stdout",
+      "source" : "5d99dc86bafd8fb8.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "d32bdd5ec05e972a",
+      "name" : "stderr",
+      "source" : "d32bdd5ec05e972a.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 2,
+    "hasContent" : true,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555623423483,
+      "stop" : 1555623424115,
+      "duration" : 632
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555623423481,
+      "stop" : 1555623423482,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_db_matches_ui"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "15600-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_db_matches_ui"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "4abbb7eb43b120e2.json",
+  "parameterValues" : [ ]
+}
