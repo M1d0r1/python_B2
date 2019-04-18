@@ -1,8 +1,8 @@
-pytest
+pytest == 4.0.0
 selenium
 jsonpickle
 pony
 pymysql
 mysql-connector-python-rf
-lxml-4.3.3-cp37-cp37m-win32.whl
 allure-pytest
+lxml-4.3.3-cp37-cp37m-win32.whl
