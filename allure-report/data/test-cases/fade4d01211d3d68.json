@@ -1,0 +1,67 @@
+{
+  "uid" : "fade4d01211d3d68",
+  "name" : "test_db_matches_ui.test_verify_contact_info_on_home_page",
+  "fullName" : "test.test_db_matches_ui.test_verify_contact_info_on_home_page",
+  "historyId" : "a17ab5e2f5634a94d89fb1184da22b87",
+  "time" : {
+    "start" : 1555531116032,
+    "stop" : 1555531117242,
+    "duration" : 1210
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 'K4BdVxNnP0F3...O7igyjB8\\ng72' == 'K4BdVxNnP0F3q...O7igyjB8\\ng72'\n    K4BdVxNnP0F3qPJ\n    aq7 0glGB4\n    7a\n  -  joysEO7igyjB8\n  ? -\n  + joysEO7igyjB8\n    g72",
+  "statusTrace" : "app = <fixture.application.Application object at 0x04BFD070>\ndb = <fixture.db.DbFixture object at 0x04BEF090>\n\n    def test_verify_contact_info_on_home_page(app, db):\n        if len(db.get_contact_list()) == 0:\n            app.contact.create(Contact(first_name=\"Contact for verification\"))\n        db_list = sorted(db.get_contact_list(), key=Contact.id_or_max)\n        home_page_list = []\n        for ind in range(0, app.contact.count()):\n            contact_from_home_page = app.contact.get_data_from_home_page_by_index(ind)\n            home_page_list.append(contact_from_home_page)\n        sorted_home_page_list = sorted(home_page_list, key=Contact.id_or_max)\n        for ind in range(0, app.contact.count()):\n            assert FormatStrings.clear_spaces(db_list[ind].first_name) == sorted_home_page_list[ind].first_name\n            assert FormatStrings.clear_spaces(db_list[ind].last_name) == sorted_home_page_list[ind].last_name\n>           assert FormatStrings.clear_spaces(\n                FormatStrings.clear_breaks(db_list[ind].primary_address)) == FormatStrings.clear_spaces(\n                FormatStrings.clear_breaks(sorted_home_page_list[ind].primary_address))\nE           AssertionError: assert 'K4BdVxNnP0F3...O7igyjB8\\ng72' == 'K4BdVxNnP0F3q...O7igyjB8\\ng72'\nE               K4BdVxNnP0F3qPJ\nE               aq7 0glGB4\nE               7a\nE             -  joysEO7igyjB8\nE             ? -\nE             + joysEO7igyjB8\nE               g72\n\ntest\\test_db_matches_ui.py:24: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "22824-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "test"
+  }, {
+    "name" : "testClass",
+    "value" : "test"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_db_matches_ui.test_verify_contact_info_on_home_page"
+  }, {
+    "name" : "package",
+    "value" : "test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "fade4d01211d3d68.json",
+  "parameterValues" : [ ]
+}

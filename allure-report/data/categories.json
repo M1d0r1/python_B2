@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert 'K4BdVxNnP0F3...O7igyjB8\\ng72' == 'K4BdVxNnP0F3q...O7igyjB8\\ng72'\n    K4BdVxNnP0F3qPJ\n    aq7 0glGB4\n    7a\n  -  joysEO7igyjB8\n  ? -\n  + joysEO7igyjB8\n    g72",
+      "children" : [ {
+        "name" : "test_db_matches_ui.test_verify_contact_info_on_home_page",
+        "uid" : "fade4d01211d3d68",
+        "parentUid" : "8eed1eaff2a216aee49d644d170ae850",
+        "status" : "failed",
+        "time" : {
+          "start" : 1555531116032,
+          "stop" : 1555531117242,
+          "duration" : 1210
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8eed1eaff2a216aee49d644d170ae850"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

@@ -1,0 +1,61 @@
+{
+  "uid" : "3e933f765d4f554c",
+  "name" : "test_db_matches_ui.test_verify_contact_phones_on_view_page",
+  "fullName" : "test.test_db_matches_ui.test_verify_contact_phones_on_view_page",
+  "historyId" : "3a9a6972f61a237e330d5802b3987651",
+  "time" : {
+    "start" : 1555531117245,
+    "stop" : 1555531119518,
+    "duration" : 2273
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "22824-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "test"
+  }, {
+    "name" : "testClass",
+    "value" : "test"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_db_matches_ui.test_verify_contact_phones_on_view_page"
+  }, {
+    "name" : "package",
+    "value" : "test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "3e933f765d4f554c.json",
+  "parameterValues" : [ ]
+}

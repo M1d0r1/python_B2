@@ -1,0 +1,61 @@
+{
+  "uid" : "bbaa5eb8d36e3d7f",
+  "name" : "test_add_group.test_add_group[Group:id=None,name=NameNU6QAajM8gO, header = HeaderxILQcM, footer = Footern]",
+  "fullName" : "test.test_add_group.test_add_group[Group:id=None,name=NameNU6QAajM8gO, header = HeaderxILQcM, footer = Footern]",
+  "historyId" : "4bb77569a2796ebbcb9ec84b58f7f95d",
+  "time" : {
+    "start" : 1555531096914,
+    "stop" : 1555531101613,
+    "duration" : 4699
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "22824-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "test"
+  }, {
+    "name" : "testClass",
+    "value" : "test"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_add_group.test_add_group[Group:id=None,name=NameNU6QAajM8gO, header = HeaderxILQcM, footer = Footern]"
+  }, {
+    "name" : "package",
+    "value" : "test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "bbaa5eb8d36e3d7f.json",
+  "parameterValues" : [ ]
+}
