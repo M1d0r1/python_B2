@@ -12,7 +12,7 @@ def test_delete_contact(app, db, check_ui):
     with allure.step("When delete a contact"):
         contact = random.choice(old_contacts)
         app.contact.delete_by_id(contact.id)
-    with allure.step("Then a new list of contacts is equal to old list with a deleted contact"):
+    with allure.step("Then a new list of contacts is equal to old list without a deleted contact"):
         old_contacts.remove(contact)
         sleep(1)
         new_contacts = db.get_contact_list()

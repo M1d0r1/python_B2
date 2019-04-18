@@ -11,7 +11,7 @@ def test_delete_group(app, db, check_ui):
     with allure.step("When deleting a group"):
         group = random.choice(old_groups)
         app.group.delete_by_id(group.id)
-    with allure.step("Then a new list of groups is equal to the old list with a deleted group"):
+    with allure.step("Then a new list of groups is equal to the old list without a deleted group"):
         new_groups = db.get_group_list()
         old_groups.remove(group)
         assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
