@@ -1,5 +1,26 @@
 {
   "uid" : "4b4757e66a1912dae1a509f688f20b0f",
   "name" : "categories",
-  "children" : [ ]
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id=\"987\"]",
+      "children" : [ {
+        "name" : "test_remove_contact_from_group",
+        "uid" : "5af4ab7cfc3beeb2",
+        "parentUid" : "36b1f643849faadbb4bb18d7b2ae3b12",
+        "status" : "broken",
+        "time" : {
+          "start" : 1555623136162,
+          "stop" : 1555623143162,
+          "duration" : 7000
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "36b1f643849faadbb4bb18d7b2ae3b12"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
 }

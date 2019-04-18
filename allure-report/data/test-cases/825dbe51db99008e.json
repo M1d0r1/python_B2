@@ -1,0 +1,172 @@
+{
+  "uid" : "825dbe51db99008e",
+  "name" : "test_add_contact[\nContact:id=None, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX]",
+  "fullName" : "test.test_add_contact#test_add_contact[\nContact:id=None, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX]",
+  "historyId" : "3a724813b723fcf963e827f2e3bcb3a0",
+  "time" : {
+    "start" : 1555620678492,
+    "stop" : 1555620684290,
+    "duration" : 5798
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1555620678492,
+      "stop" : 1555620678492,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555620669949,
+      "stop" : 1555620669949,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1555620669949,
+      "stop" : 1555620669968,
+      "duration" : 19
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555620669969,
+      "stop" : 1555620678491,
+      "duration" : 8522
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "3f2f772abcdd3912",
+      "name" : "log",
+      "source" : "3f2f772abcdd3912.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "83f5cbec81c6de75",
+      "name" : "stdout",
+      "source" : "83f5cbec81c6de75.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "f1b7f8829d300b02",
+      "name" : "stderr",
+      "source" : "f1b7f8829d300b02.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 3
+  },
+  "afterStages" : [ {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555620736686,
+      "stop" : 1555620737329,
+      "duration" : 643
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555620736684,
+      "stop" : 1555620736685,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_contact"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "9028-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_contacts",
+    "value" : "\nContact:id=None, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "825dbe51db99008e.json",
+  "parameterValues" : [ "\nContact:id=None, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX" ]
+}

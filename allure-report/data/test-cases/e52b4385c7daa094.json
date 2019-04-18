@@ -1,0 +1,235 @@
+{
+  "uid" : "e52b4385c7daa094",
+  "name" : "test_add_group[Group:id=None,name=Name83SATGfqEPGjbLy8sJ, header = HeadersTv5t45GARC2G7Bc, footer = FooterW6BQoMtlyYqsMp]",
+  "fullName" : "test.test_add_group#test_add_group[Group:id=None,name=Name83SATGfqEPGjbLy8sJ, header = HeadersTv5t45GARC2G7Bc, footer = FooterW6BQoMtlyYqsMp]",
+  "historyId" : "666eaf15f69601d8340a13d1211b8e58",
+  "time" : {
+    "start" : 1555622937902,
+    "stop" : 1555622941848,
+    "duration" : 3946
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "db",
+    "time" : {
+      "start" : 1555622922028,
+      "stop" : 1555622922046,
+      "duration" : 18
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555622922028,
+      "stop" : 1555622922028,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1555622937902,
+      "stop" : 1555622937902,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555622937881,
+      "stop" : 1555622937902,
+      "duration" : 21
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Get old groups list",
+      "time" : {
+        "start" : 1555622937902,
+        "stop" : 1555622937903,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "When I add a group Group:id=None,name=Name83SATGfqEPGjbLy8sJ, header = HeadersTv5t45GARC2G7Bc, footer = FooterW6BQoMtlyYqsMp to the list",
+      "time" : {
+        "start" : 1555622937903,
+        "stop" : 1555622941847,
+        "duration" : 3944
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Then the new list of groups is equal to the old list with the added group",
+      "time" : {
+        "start" : 1555622941847,
+        "stop" : 1555622941848,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "8aa4956b67c2b034",
+      "name" : "log",
+      "source" : "8aa4956b67c2b034.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "edd372d1801ba13f",
+      "name" : "stdout",
+      "source" : "edd372d1801ba13f.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "bf08597e6a7fbdcb",
+      "name" : "stderr",
+      "source" : "bf08597e6a7fbdcb.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 3
+  },
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555622991255,
+      "stop" : 1555622991255,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555622991256,
+      "stop" : 1555622992049,
+      "duration" : 793
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "20324-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "Group:id=None,name=Name83SATGfqEPGjbLy8sJ, header = HeadersTv5t45GARC2G7Bc, footer = FooterW6BQoMtlyYqsMp"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "4cec7803683a90bb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1555621428009,
+        "stop" : 1555621431973,
+        "duration" : 3964
+      }
+    }, {
+      "uid" : "6d44fa31546d207d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1555620686694,
+        "stop" : 1555620690676,
+        "duration" : 3982
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "e52b4385c7daa094.json",
+  "parameterValues" : [ "Group:id=None,name=Name83SATGfqEPGjbLy8sJ, header = HeadersTv5t45GARC2G7Bc, footer = FooterW6BQoMtlyYqsMp" ]
+}

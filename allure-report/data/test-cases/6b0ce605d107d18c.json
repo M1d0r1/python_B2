@@ -1,0 +1,217 @@
+{
+  "uid" : "6b0ce605d107d18c",
+  "name" : "test_add_group[Group:id=None,name=NamepV3LP, header = HeadercTJ, footer = FootermRH2I5 09bX9nE]",
+  "fullName" : "test.test_add_group#test_add_group[Group:id=None,name=NamepV3LP, header = HeadercTJ, footer = FootermRH2I5 09bX9nE]",
+  "historyId" : "8a31f299be09e293ce5cea85ad1d6658",
+  "time" : {
+    "start" : 1555621435947,
+    "stop" : 1555621439889,
+    "duration" : 3942
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "teardown",
+    "time" : {
+      "start" : 1555621412099,
+      "stop" : 1555621412099,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1555621412100,
+      "stop" : 1555621412108,
+      "duration" : 8
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1555621435946,
+      "stop" : 1555621435946,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1555621435917,
+      "stop" : 1555621435946,
+      "duration" : 29
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Get old groups list",
+      "time" : {
+        "start" : 1555621435947,
+        "stop" : 1555621435948,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "When I add a group Group:id=None,name=NamepV3LP, header = HeadercTJ, footer = FootermRH2I5 09bX9nE to the list",
+      "time" : {
+        "start" : 1555621435948,
+        "stop" : 1555621439888,
+        "duration" : 3940
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Then the new list of groups is equal to the old list with the added group",
+      "time" : {
+        "start" : 1555621439888,
+        "stop" : 1555621439889,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "cedf97ef49a7885d",
+      "name" : "log",
+      "source" : "cedf97ef49a7885d.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "f9bdd2f727abdd64",
+      "name" : "stdout",
+      "source" : "f9bdd2f727abdd64.txt",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "1b2ebb5946a336c1",
+      "name" : "stderr",
+      "source" : "1b2ebb5946a336c1.txt",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 3
+  },
+  "afterStages" : [ {
+    "name" : "teardown::fin",
+    "time" : {
+      "start" : 1555621477873,
+      "stop" : 1555621478499,
+      "duration" : 626
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1555621477872,
+      "stop" : 1555621477872,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-P40BCFDO"
+  }, {
+    "name" : "thread",
+    "value" : "17980-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "Group:id=None,name=NamepV3LP, header = HeadercTJ, footer = FootermRH2I5 09bX9nE"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "6b0ce605d107d18c.json",
+  "parameterValues" : [ "Group:id=None,name=NamepV3LP, header = HeadercTJ, footer = FootermRH2I5 09bX9nE" ]
+}
