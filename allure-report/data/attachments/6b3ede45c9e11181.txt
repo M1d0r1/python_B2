@@ -1,7 +1,0 @@
-CONTACT TO MODIFY:  976
-OLD SORTED:  [
-Contact:id=976, first_name=NameYFljUz70 ziOvXRnkOdRonawo9PLqO6GO VI, last_name=Last namemlHdofFPzX YT6g3K4Moc3Hi 2m zx6PFoT2BA11Umpe, 
-Contact:id=978, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX]
-NEW SORTED:  [
-Contact:id=976, first_name=NameYFljUz70 ziOvXRnkOdRonawo9PLqO6GO VI, last_name=Last namemlHdofFPzX YT6g3K4Moc3Hi 2m zx6PFoT2BA11Umpe, 
-Contact:id=978, first_name=NameYFljUz70, last_name=Last namemlHdofFPzX]
